@@ -1,0 +1,5 @@
+C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\ArcMapAddin1\SymbologyMenu\bin\Debug\SymbologyMenu.dll
+C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\ArcMapAddin1\SymbologyMenu\bin\Debug\SymbologyMenu.pdb
+C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\ArcMapAddin1\SymbologyMenu\bin\Debug\SymbologyMenu.tlb
+C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\ArcMapAddin1\SymbologyMenu\obj\Debug\SymbologyMenu.dll
+C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\ArcMapAddin1\SymbologyMenu\obj\Debug\SymbologyMenu.pdb

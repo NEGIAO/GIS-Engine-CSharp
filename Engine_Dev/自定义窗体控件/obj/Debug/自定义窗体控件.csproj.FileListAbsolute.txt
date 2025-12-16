@@ -1,0 +1,15 @@
+C:\Users\HP\Desktop\C_sharp_二次开发\add_in_9_16\ArcMapAddin1\自定义窗体控件\bin\Debug\自定义窗体控件.dll
+C:\Users\HP\Desktop\C_sharp_二次开发\add_in_9_16\ArcMapAddin1\自定义窗体控件\bin\Debug\自定义窗体控件.pdb
+C:\Users\HP\Desktop\C_sharp_二次开发\add_in_9_16\ArcMapAddin1\自定义窗体控件\obj\Debug\自定义窗体控件.UserControl1.resources
+C:\Users\HP\Desktop\C_sharp_二次开发\add_in_9_16\ArcMapAddin1\自定义窗体控件\obj\Debug\自定义窗体控件.csproj.GenerateResource.Cache
+C:\Users\HP\Desktop\C_sharp_二次开发\add_in_9_16\ArcMapAddin1\自定义窗体控件\obj\Debug\自定义窗体控件.dll
+C:\Users\HP\Desktop\C_sharp_二次开发\add_in_9_16\ArcMapAddin1\自定义窗体控件\obj\Debug\自定义窗体控件.pdb
+C:\Users\HP\Desktop\C_sharp_二次开发\add_in_9_16\ArcMapAddin1\自定义窗体控件\obj\Debug\自定义窗体控件.Properties.Resources.resources
+C:\Users\HP\Desktop\ArcMapAddin1\自定义窗体控件\bin\Debug\自定义窗体控件.dll
+C:\Users\HP\Desktop\ArcMapAddin1\自定义窗体控件\bin\Debug\自定义窗体控件.pdb
+C:\Users\HP\Desktop\ArcMapAddin1\自定义窗体控件\obj\Debug\自定义窗体控件.csprojResolveAssemblyReference.cache
+C:\Users\HP\Desktop\ArcMapAddin1\自定义窗体控件\obj\Debug\自定义窗体控件.Properties.Resources.resources
+C:\Users\HP\Desktop\ArcMapAddin1\自定义窗体控件\obj\Debug\自定义窗体控件.UserControl1.resources
+C:\Users\HP\Desktop\ArcMapAddin1\自定义窗体控件\obj\Debug\自定义窗体控件.csproj.GenerateResource.Cache
+C:\Users\HP\Desktop\ArcMapAddin1\自定义窗体控件\obj\Debug\自定义窗体控件.dll
+C:\Users\HP\Desktop\ArcMapAddin1\自定义窗体控件\obj\Debug\自定义窗体控件.pdb

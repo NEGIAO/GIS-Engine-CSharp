@@ -1,0 +1,17 @@
+C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\ArcMapAddin1\自定义窗体控件_地图量测窗口\bin\Debug\自定义窗体控件_地图量测窗口.exe.config
+C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\ArcMapAddin1\自定义窗体控件_地图量测窗口\bin\Debug\自定义窗体控件_地图量测窗口.exe
+C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\ArcMapAddin1\自定义窗体控件_地图量测窗口\bin\Debug\自定义窗体控件_地图量测窗口.pdb
+C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\ArcMapAddin1\自定义窗体控件_地图量测窗口\obj\Debug\自定义窗体控件_地图量测窗口.FormMeasureResult.resources
+C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\ArcMapAddin1\自定义窗体控件_地图量测窗口\obj\Debug\自定义窗体控件_地图量测窗口.Properties.Resources.resources
+C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\ArcMapAddin1\自定义窗体控件_地图量测窗口\obj\Debug\自定义窗体控件_地图量测窗口.csproj.GenerateResource.Cache
+C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\ArcMapAddin1\自定义窗体控件_地图量测窗口\obj\Debug\自定义窗体控件_地图量测窗口.exe
+C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\ArcMapAddin1\自定义窗体控件_地图量测窗口\obj\Debug\自定义窗体控件_地图量测窗口.pdb
+C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\Engine_Dev\自定义窗体控件_地图量测窗口\bin\Debug\自定义窗体控件_地图量测窗口.exe.config
+C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\Engine_Dev\自定义窗体控件_地图量测窗口\bin\Debug\自定义窗体控件_地图量测窗口.exe
+C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\Engine_Dev\自定义窗体控件_地图量测窗口\bin\Debug\自定义窗体控件_地图量测窗口.pdb
+C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\Engine_Dev\自定义窗体控件_地图量测窗口\obj\Debug\自定义窗体控件_地图量测窗口.FormMeasureResult.resources
+C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\Engine_Dev\自定义窗体控件_地图量测窗口\obj\Debug\自定义窗体控件_地图量测窗口.Properties.Resources.resources
+C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\Engine_Dev\自定义窗体控件_地图量测窗口\obj\Debug\自定义窗体控件_地图量测窗口.csproj.GenerateResource.Cache
+C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\Engine_Dev\自定义窗体控件_地图量测窗口\obj\Debug\自定义窗体控件_地图量测窗口.exe
+C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\Engine_Dev\自定义窗体控件_地图量测窗口\obj\Debug\自定义窗体控件_地图量测窗口.pdb
+C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\Engine_Dev\自定义窗体控件_地图量测窗口\obj\Debug\自定义窗体控件_地图量测窗口.csprojResolveAssemblyReference.cache
