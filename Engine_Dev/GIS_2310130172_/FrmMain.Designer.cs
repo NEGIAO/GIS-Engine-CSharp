@@ -67,13 +67,15 @@
             this.统计选择集 = new System.Windows.Forms.ToolStripMenuItem();
             this.Editor = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsmAddFeature = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
+            this.cmbSelLayer = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmStartEdit = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmEndEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmAddFeature = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmSaveEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmEndEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
-            this.cmbSelLayer = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.BarCoorTxt = new System.Windows.Forms.ToolStripStatusLabel();
@@ -100,8 +102,6 @@
             this.btnLayerSel = new System.Windows.Forms.ToolStripMenuItem();
             this.btnLayerUnSel = new System.Windows.Forms.ToolStripMenuItem();
             this.axToolbarControl1 = new ESRI.ArcGIS.Controls.AxToolbarControl();
-            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -422,12 +422,18 @@
             this.toolStripSeparator6.Name = "toolStripSeparator6";
             this.toolStripSeparator6.Size = new System.Drawing.Size(178, 6);
             // 
-            // tsmAddFeature
+            // toolStripTextBox1
             // 
-            this.tsmAddFeature.Name = "tsmAddFeature";
-            this.tsmAddFeature.Size = new System.Drawing.Size(181, 22);
-            this.tsmAddFeature.Text = "添加要素";
-            this.tsmAddFeature.Click += new System.EventHandler(this.创建要素类ToolStripMenuItem_Click);
+            this.toolStripTextBox1.Name = "toolStripTextBox1";
+            this.toolStripTextBox1.ReadOnly = true;
+            this.toolStripTextBox1.Size = new System.Drawing.Size(100, 23);
+            this.toolStripTextBox1.Text = "↓选择编辑图层↓";
+            // 
+            // cmbSelLayer
+            // 
+            this.cmbSelLayer.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.cmbSelLayer.Name = "cmbSelLayer";
+            this.cmbSelLayer.Size = new System.Drawing.Size(121, 25);
             // 
             // toolStripSeparator7
             // 
@@ -441,12 +447,17 @@
             this.tsmStartEdit.Text = "开始编辑";
             this.tsmStartEdit.Click += new System.EventHandler(this.tsmStartEdit_Click);
             // 
-            // tsmEndEdit
+            // tsmAddFeature
             // 
-            this.tsmEndEdit.Name = "tsmEndEdit";
-            this.tsmEndEdit.Size = new System.Drawing.Size(181, 22);
-            this.tsmEndEdit.Text = "结束编辑";
-            this.tsmEndEdit.Click += new System.EventHandler(this.tsmEndEdit_Click);
+            this.tsmAddFeature.Name = "tsmAddFeature";
+            this.tsmAddFeature.Size = new System.Drawing.Size(181, 22);
+            this.tsmAddFeature.Text = "添加要素";
+            this.tsmAddFeature.Click += new System.EventHandler(this.创建要素类ToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator10
+            // 
+            this.toolStripSeparator10.Name = "toolStripSeparator10";
+            this.toolStripSeparator10.Size = new System.Drawing.Size(178, 6);
             // 
             // tsmSaveEdit
             // 
@@ -455,16 +466,17 @@
             this.tsmSaveEdit.Text = "保存编辑";
             this.tsmSaveEdit.Click += new System.EventHandler(this.tsmSaveEdit_Click);
             // 
+            // tsmEndEdit
+            // 
+            this.tsmEndEdit.Name = "tsmEndEdit";
+            this.tsmEndEdit.Size = new System.Drawing.Size(181, 22);
+            this.tsmEndEdit.Text = "结束编辑";
+            this.tsmEndEdit.Click += new System.EventHandler(this.tsmEndEdit_Click);
+            // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
             this.toolStripSeparator8.Size = new System.Drawing.Size(178, 6);
-            // 
-            // cmbSelLayer
-            // 
-            this.cmbSelLayer.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.cmbSelLayer.Name = "cmbSelLayer";
-            this.cmbSelLayer.Size = new System.Drawing.Size(121, 25);
             // 
             // toolStripSeparator9
             // 
@@ -532,6 +544,7 @@
             this.axTOCControl1.TabIndex = 0;
             this.axTOCControl1.OnMouseDown += new ESRI.ArcGIS.Controls.ITOCControlEvents_Ax_OnMouseDownEventHandler(this.axTOCControl1_OnMouseDown);
             this.axTOCControl1.OnMouseUp += new ESRI.ArcGIS.Controls.ITOCControlEvents_Ax_OnMouseUpEventHandler(this.axTOCControl1_OnMouseUp);
+            this.axTOCControl1.OnDoubleClick += new ESRI.ArcGIS.Controls.ITOCControlEvents_Ax_OnDoubleClickEventHandler(this.axTOCControl1_OnDoubleClick);
             // 
             // EagleEyeMapConrol
             // 
@@ -689,18 +702,6 @@
             this.axToolbarControl1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axToolbarControl1.OcxState")));
             this.axToolbarControl1.Size = new System.Drawing.Size(918, 28);
             this.axToolbarControl1.TabIndex = 2;
-            // 
-            // toolStripSeparator10
-            // 
-            this.toolStripSeparator10.Name = "toolStripSeparator10";
-            this.toolStripSeparator10.Size = new System.Drawing.Size(178, 6);
-            // 
-            // toolStripTextBox1
-            // 
-            this.toolStripTextBox1.Name = "toolStripTextBox1";
-            this.toolStripTextBox1.ReadOnly = true;
-            this.toolStripTextBox1.Size = new System.Drawing.Size(100, 23);
-            this.toolStripTextBox1.Text = "↓选择编辑图层↓";
             // 
             // FrmMain
             // 

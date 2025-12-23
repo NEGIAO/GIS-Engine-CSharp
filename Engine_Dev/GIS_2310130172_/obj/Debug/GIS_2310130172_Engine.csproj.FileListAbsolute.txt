@@ -65,3 +65,5 @@ C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\Engine_Dev\GIS_2310130172_\obj
 C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\Engine_Dev\GIS_2310130172_\obj\Debug\GIS_2310130172_Engine.csproj.GenerateResource.Cache
 C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\Engine_Dev\GIS_2310130172_\obj\Debug\GIS_2310130172_.exe
 C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\Engine_Dev\GIS_2310130172_\obj\Debug\GIS_2310130172_.pdb
+C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\Engine_Dev\GIS_2310130172_\bin\Debug\自定义窗体控件_符号选择器.dll
+C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\Engine_Dev\GIS_2310130172_\bin\Debug\自定义窗体控件_符号选择器.pdb

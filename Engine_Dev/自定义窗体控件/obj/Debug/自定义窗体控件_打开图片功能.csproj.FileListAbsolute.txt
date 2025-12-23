@@ -28,4 +28,3 @@ C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\Engine_Dev\自定义窗体控�
 C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\Engine_Dev\自定义窗体控件\obj\Debug\自定义窗体控件_打开图片功能.csproj.GenerateResource.Cache
 C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\Engine_Dev\自定义窗体控件\obj\Debug\自定义窗体控件.dll
 C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\Engine_Dev\自定义窗体控件\obj\Debug\自定义窗体控件.pdb
-C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\Engine_Dev\自定义窗体控件\obj\Debug\自定义窗体控件_打开图片功能.csprojResolveAssemblyReference.cache

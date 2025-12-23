@@ -176,6 +176,10 @@
       <Project>{773acd44-5f9d-4415-8116-500b7f84fd8e}</Project>
       <Name>自定义窗体控件_地图量测窗口</Name>
     </ProjectReference>
+    <ProjectReference Include="..\自定义窗体控件_符号选择器\自定义窗体控件_符号选择器.csproj">
+      <Project>{20f23fc4-4cc1-49ef-af8e-6ec3f878b087}</Project>
+      <Name>自定义窗体控件_符号选择器</Name>
+    </ProjectReference>
     <ProjectReference Include="..\自定义窗体控件_统计选择集\自定义窗体控件_统计选择集.csproj">
       <Project>{17f210a3-6224-49f3-a4d4-3ff4070fb79a}</Project>
       <Name>自定义窗体控件_统计选择集</Name>

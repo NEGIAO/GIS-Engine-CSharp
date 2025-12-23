@@ -15,9 +15,9 @@ C:\Users\NEGIAO\Desktop\Engine_Dev\自定义窗体控件_地图选择集\bin\Deb
 C:\Users\NEGIAO\Desktop\Engine_Dev\自定义窗体控件_地图选择集\obj\Debug\自定义窗体控件_地图选择集.pdb
 C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\Engine_Dev\自定义窗体控件_地图选择集\bin\Debug\自定义窗体控件_地图选择集.exe
 C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\Engine_Dev\自定义窗体控件_地图选择集\bin\Debug\自定义窗体控件_地图选择集.pdb
-C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\Engine_Dev\自定义窗体控件_地图选择集\obj\Debug\自定义窗体控件_地图选择集.csprojResolveAssemblyReference.cache
 C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\Engine_Dev\自定义窗体控件_地图选择集\obj\Debug\自定义窗体控件_地图选择集.FormSelection.resources
 C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\Engine_Dev\自定义窗体控件_地图选择集\obj\Debug\自定义窗体控件_地图选择集.Properties.Resources.resources
 C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\Engine_Dev\自定义窗体控件_地图选择集\obj\Debug\自定义窗体控件_地图选择集.csproj.GenerateResource.Cache
 C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\Engine_Dev\自定义窗体控件_地图选择集\obj\Debug\自定义窗体控件_地图选择集.exe
 C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\Engine_Dev\自定义窗体控件_地图选择集\obj\Debug\自定义窗体控件_地图选择集.pdb
+C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\Engine_Dev\自定义窗体控件_地图选择集\obj\Debug\自定义窗体控件_地图选择集.csprojResolveAssemblyReference.cache

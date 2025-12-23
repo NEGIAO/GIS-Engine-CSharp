@@ -24,6 +24,7 @@ using 自定义窗体控件_地图导出窗口;
 using 自定义窗体控件_地图量测窗口;
 using 自定义窗体控件_地图选择集;
 using 自定义窗体控件_统计选择集;
+using 自定义窗体控件_符号选择器;
 
 namespace GIS_2310130172_Engine
 {
@@ -882,7 +883,77 @@ namespace GIS_2310130172_Engine
         }
         #endregion
 
-        #region TOC 内容列表：顺序的调整（左键）、显示菜单（右键）
+        #region TOC 内容列表：符号选择、顺序的调整（左键）、显示菜单（右键）
+        //TOC双击事件，选择符号
+        //private void axTOCControl1_OnDoubleClick(object sender, ITOCControlEvents_OnDoubleClickEvent e)
+        //{
+        //    esriTOCControlItem itemType = esriTOCControlItem.esriTOCControlItemNone;
+        //    IBasicMap basicMap = null;
+        //    ILayer layer = null;
+        //    object unk = null;
+        //    object data = null;
+        //    axTOCControl1.HitTest(e.x, e.y, ref itemType, ref basicMap, ref layer, ref unk, ref data);
+        //    if (e.button == 1)
+        //    {
+        //        if (itemType == esriTOCControlItem.esriTOCControlItemLegendClass)
+        //        {
+        //            //取得图例
+        //            ILegendClass pLegendClass = ((ILegendGroup)unk).get_Class((int)data);
+        //            //创建符号选择器 SymbolSelector 实例
+        //            frmSymbolSelector SymbolSelectorFrm = new frmSymbolSelector(pLegendClass, layer);
+        //            if (SymbolSelectorFrm.ShowDialog() == DialogResult.OK)
+        //            {
+        //                //局部更新主 Map 控件
+        //                axMapControl1.ActiveView.PartialRefresh(esriViewDrawPhase.esriViewGeography,
+        //                null, null);
+        //                pLegendClass.Symbol = SymbolSelectorFrm.pSymbol; //设置新的符号
+        //                this.axMapControl1.ActiveView.Refresh(); //更新主 Map 控件和图层控件
+        //                this.axMapControl1.Refresh();
+        //            }
+        //        }
+        //    }
+        //}
+        private void axTOCControl1_OnDoubleClick(object sender, ITOCControlEvents_OnDoubleClickEvent e)
+        {
+            esriTOCControlItem itemType = esriTOCControlItem.esriTOCControlItemNone;
+            IBasicMap basicMap = null;
+            ILayer layer = null;
+            object unk = null;
+            object data = null;
+
+            // 1. 探测点击位置
+            axTOCControl1.HitTest(e.x, e.y, ref itemType, ref basicMap, ref layer, ref unk, ref data);
+
+            if (e.button == 1) // 左键双击
+            {
+                if (itemType == esriTOCControlItem.esriTOCControlItemLegendClass)
+                {
+                    // 2. 取得当前图例
+                    ILegendClass pLegendClass = ((ILegendGroup)unk).get_Class((int)data);
+
+                    // 3. 打开符号选择器
+                    frmSymbolSelector SymbolSelectorFrm = new frmSymbolSelector(pLegendClass, layer);
+                    if (SymbolSelectorFrm.ShowDialog() == DialogResult.OK)
+                    {
+                        // 【核心修正 A】：先设置新的符号
+                        if (SymbolSelectorFrm.pSymbol != null)
+                        {
+                            pLegendClass.Symbol = SymbolSelectorFrm.pSymbol;
+                        }
+
+                        // 【核心修正 B】：声明内容已改变，这是同步 TOC 和 Map 的关键
+                        axMapControl1.ActiveView.ContentsChanged();
+
+                        // 【核心修正 C】：刷新地图和 TOC
+                        // 刷新地理要素层
+                        axMapControl1.ActiveView.PartialRefresh(esriViewDrawPhase.esriViewGeography, null, null);
+                        // 刷新 TOC 列表，使左侧图标更新
+                        axTOCControl1.Update();
+                    }
+                }
+            }
+        }
+
         private void axTOCControl1_OnMouseDown(object sender, ITOCControlEvents_OnMouseDownEvent e)
         {
             if (e.button == 1 )//鼠标左键
@@ -1708,5 +1779,6 @@ namespace GIS_2310130172_Engine
             }
         }
         #endregion
+
     }
 }
