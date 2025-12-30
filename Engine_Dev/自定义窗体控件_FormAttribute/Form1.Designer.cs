@@ -42,6 +42,7 @@
             this.dataGridAttribute.RowTemplate.Height = 23;
             this.dataGridAttribute.Size = new System.Drawing.Size(639, 352);
             this.dataGridAttribute.TabIndex = 0;
+            this.dataGridAttribute.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridAttribute_CellDoubleClick);
             // 
             // FormAttribute
             // 
@@ -51,7 +52,7 @@
             this.Controls.Add(this.dataGridAttribute);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormAttribute";
-            this.Text = "Form1";
+            this.Text = "属性窗口";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridAttribute)).EndInit();
             this.ResumeLayout(false);
 

@@ -1,4 +1,5 @@
 ﻿using System;//系统引用文件
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -31,6 +32,10 @@ namespace GIS_2310130172_Engine
     public partial class FrmMain : Form
     {
         #region 全局标识变量
+
+        // 用于存储当前地图文档的路径，如果为空说明是“未保存的新建地图”
+        private string m_mapDocumentName = string.Empty; 
+
         // ==========================================
         // 1. 核心控制开关
         // ==========================================
@@ -71,7 +76,7 @@ namespace GIS_2310130172_Engine
         private int toIndex;
         private Point pMoveLayerPoint = new Point();
 
-        private 自定义窗体控件_FormAttribute.FormAttribute frmattirbute = null;
+        private 自定义窗体控件_FormAttribute.FormAttribute frmattribute = null;
 
         // 定制化 Toolbar
         private ICustomizeDialog cd = new CustomizeDialogClass();
@@ -139,8 +144,216 @@ namespace GIS_2310130172_Engine
             IMenuDef menuDef = new 自定义DLL_SymbologyMenu.SymbologyMenu();
             axToolbarControl1.AddItem(menuDef,-1,-1,false,-1,esriCommandStyles.esriCommandStyleIconAndText);
         }
+        #region 选项卡代码
+        #region 文件选项卡
+        #region 地图mxd文档的IO操作
+        private void 保存地图ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // 情况A：如果是新建的地图（没有路径），则执行“另存为”
+            if (string.IsNullOrEmpty(m_mapDocumentName))
+            {
+                另存地图ToolStripMenuItem_Click(sender, e); // 调用另存为事件
+                return;
+            }
 
-        #region 数据载入菜单
+            // 情况B：已经有路径，直接覆盖保存
+            try
+            {
+                // 1. 创建地图文档对象
+                IMapDocument mapDoc = new MapDocumentClass();
+
+                // 2. 打开现有文档
+                mapDoc.Open(m_mapDocumentName, "");
+
+                // 3. 将 MapControl 的当前状态（缩放、图层修改后）替换进去
+                mapDoc.ReplaceContents((IMxdContents)axMapControl1.Map);
+
+                // 4. 保存更改
+                mapDoc.Save(mapDoc.UsesRelativePaths, true);
+                mapDoc.Close();
+
+                MessageBox.Show("保存成功！");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("保存失败：" + ex.Message);
+            }
+        }
+
+        private void 加载地图ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "打开地图文档";
+            openFileDialog.Filter = "地图文档 (*.mxd)|*.mxd";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = openFileDialog.FileName;
+
+                // 检查文件是否有效
+                if (axMapControl1.CheckMxFile(filePath))
+                {
+                    // 1. 加载地图
+                    axMapControl1.LoadMxFile(filePath);
+
+                    // 2. 记录当前文件路径
+                    m_mapDocumentName = filePath;
+                }
+                else
+                {
+                    MessageBox.Show("无效的地图文档文件！");
+                }
+            }
+        }
+
+        private void 新建地图ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // 提示用户保存当前地图（可选优化）
+            if (!string.IsNullOrEmpty(m_mapDocumentName))
+            {
+                MessageBox.Show("建议先保存当前的文档！！！");
+            }
+
+            try
+            {
+                // ======================================================
+                // 1. 处理主地图控件 (MapControl)
+                // ======================================================
+                axMapControl1.ClearLayers();
+                axMapControl1.Map.SpatialReference = null; // 重置坐标系
+                axMapControl1.Map.MapUnits = esriUnits.esriUnknownUnits; // 重置单位
+
+                // 清除主地图上的所有临时标注或高亮图形
+                IActiveView activeViewMain = axMapControl1.ActiveView;
+                activeViewMain.GraphicsContainer.DeleteAllElements();
+                activeViewMain.Refresh();
+
+                // ======================================================
+                // 2. 处理鹰眼控件 (EagleEyeMapControl)
+                // ======================================================
+                EagleEyeMapControl.ClearLayers();
+
+                // 鹰眼上有红色的矩形框，这是 Element，必须通过 GraphicsContainer 清除
+                IActiveView activeViewEagle = EagleEyeMapControl.ActiveView;
+                activeViewEagle.GraphicsContainer.DeleteAllElements();
+                activeViewEagle.Refresh();
+
+                // ======================================================
+                // 3. 处理布局控件 (PageLayoutControl)
+                // ======================================================
+                // 布局视图通常包含：MapFrame（数据框）、Legend（图例）、NorthArrow（指北针）等
+                // 只保留 MapFrame，删除其他的“修饰要素”
+
+                IPageLayout pageLayout = axPageLayoutControl1.PageLayout;
+                IGraphicsContainer containerLayout = pageLayout as IGraphicsContainer;
+
+                // 使用 Reset 和 Next 遍历所有元素
+                containerLayout.Reset();
+                IElement element = containerLayout.Next();
+                List<IElement> elementsToDelete = new List<IElement>();
+
+                while (element != null)
+                {
+                    // 如果这个元素 是 MapFrame (数据框)，保留，但要清空里面的图层
+                    if (element is IMapFrame)
+                    {
+                        IMapFrame mapFrame = element as IMapFrame;
+                    }
+                    else
+                    {
+                        // 如果是 图例、指北针、文字 等，加入待删除列表
+                        elementsToDelete.Add(element);
+                    }
+                    element = containerLayout.Next();
+                }
+
+                // 执行删除 (不能在遍历时直接删除，会破坏迭代器)
+                foreach (var delEle in elementsToDelete)
+                {
+                    containerLayout.DeleteElement(delEle);
+                }
+
+                axPageLayoutControl1.ActiveView.Refresh();
+
+                // ======================================================
+                // 4. 重置全局变量和 TOC
+                // ======================================================
+                m_mapDocumentName = string.Empty;
+
+                // 重新设置 TOC 的伙伴控件，确保它指向正确的主地图
+                axTOCControl1.SetBuddyControl(axMapControl1);
+                axTOCControl1.Update();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("新建地图时出错：" + ex.Message);
+            }
+        }
+
+        private void 另存地图ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Title = "另存为";
+            saveFileDialog.Filter = "地图文档 (*.mxd)|*.mxd";
+            saveFileDialog.OverwritePrompt = true;
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = saveFileDialog.FileName;
+
+                try
+                {
+                    // 1. 创建地图文档对象
+                    IMapDocument mapDoc = new MapDocumentClass();
+
+                    // 2. 创建新文件（如果文件已存在会被覆盖）
+                    mapDoc.New(filePath);
+
+                    // 3. 将 MapControl 中的当前内容替换到文档中
+                    // 【关键步骤】必须把 axMapControl1.Map 塞进 mapDoc 里
+                    mapDoc.ReplaceContents((IMxdContents)axMapControl1.Map);
+
+                    // 4. 保存并关闭
+                    mapDoc.Save(mapDoc.UsesRelativePaths, true);
+                    mapDoc.Close();
+
+                    // 5. 更新当前路径变量
+                    m_mapDocumentName = filePath;
+
+                    MessageBox.Show("保存成功！");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("保存失败：" + ex.Message);
+                }
+            }
+        }
+        #endregion
+
+        #region 导出地图：两个选项
+        private void 局部导出ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            axMapControl1.CurrentTool = null;
+            axMapControl1.MousePointer = esriControlsMousePointer.esriPointerCrosshair;
+            pMouseOperate = "ExportRegion";
+        }
+
+        private void 全局导出ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //frmExpMap 以声明为全局变量
+            if (frmExpMap == null || frmExpMap.IsDisposed)
+            {
+                frmExpMap = new FormExportMap(axMapControl1);
+            }
+            frmExpMap.IsRegion = false;
+            frmExpMap.GetGeometry = axMapControl1.ActiveView.Extent;
+            frmExpMap.Show();
+            frmExpMap.Activate();
+        }
+        #endregion
+        #endregion
+
+        #region 数据载入选项卡
         private void loadMxFile方法ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -352,6 +565,7 @@ namespace GIS_2310130172_Engine
             ClearAllData();
             AddAllDataset(pWorkSpace, axMapControl1);
         }
+
         /// <summary>
         /// 加载工作空间的要素或者是栅格数据
         /// </summary>
@@ -452,7 +666,7 @@ namespace GIS_2310130172_Engine
         }
         #endregion
 
-        #region 要素选择菜单
+        #region 要素选择选项卡
         private void 要素选择ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
 
@@ -502,6 +716,414 @@ namespace GIS_2310130172_Engine
             cmd.OnCreate(axMapControl1.Object);
             cmd.OnClick();
         }
+        #endregion
+
+        #region 地图量测选项卡
+
+        //窗体关闭函数
+        private void frmMeasureResult_frmColsed()
+        {
+            //清空线对象
+            if (pNewLineFeedback != null)
+            {
+                pNewLineFeedback.Stop();
+                pNewLineFeedback = null;
+            }
+            //清空面对象
+            if (pNewPolygonFeedback != null)
+            {
+                pNewPolygonFeedback.Stop();
+                pNewPolygonFeedback = null;
+                pAreaPointCol.RemovePoints(0, pAreaPointCol.PointCount); //清空点集中所有点
+            }
+            //清空量算画的线、面对象
+            axMapControl1.ActiveView.PartialRefresh(esriViewDrawPhase.esriViewForeground, null, null);
+            //结束量算功能
+            pMouseOperate = string.Empty;
+            axMapControl1.MousePointer = esriControlsMousePointer.esriPointerDefault;
+        }
+
+        private void axMapControl1_OnDoubleClick(object sender, IMapControlEvents2_OnDoubleClickEvent e)
+        {
+            string SMapUnits = GetMapUnits(axMapControl1.Map.MapUnits);
+            #region 长度量算
+            if (pMouseOperate == "MeasureLength")
+            {
+                if (frmMeasureResult != null)
+                {
+                    frmMeasureResult.IbIMeasureResult.Text = "线段总长度为： " + dToltalLength + SMapUnits;
+                }
+                if (pNewLineFeedback != null)
+                {
+                    pNewLineFeedback.Stop();
+                    pNewLineFeedback = null;
+                    //清空所画的线对象
+                    (axMapControl1.Map as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewForeground, null, null);
+                }
+                dToltalLength = 0;
+                dSegmentLength = 0;
+            }
+            #endregion
+
+            #region 面积量算
+            if (pMouseOperate == "MeasureArea")
+            {
+                if (pNewPolygonFeedback != null)
+                {
+                    pNewPolygonFeedback.Stop();
+                    pNewPolygonFeedback = null;
+                    //清空所画的线对象
+                    (axMapControl1.Map as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewForeground, null, null);
+                }
+                pAreaPointCol.RemovePoints(0, pAreaPointCol.PointCount); //清空点集中所有点
+            }
+            #endregion
+        }
+
+        private void 距离量测_Click(object sender, EventArgs e)
+        {
+            axMapControl1.CurrentTool = null;
+            pMouseOperate = "MeasureLength";
+            axMapControl1.MousePointer = esriControlsMousePointer.esriPointerCrosshair;
+            if (frmMeasureResult == null || frmMeasureResult.IsDisposed)
+            {
+                frmMeasureResult = new FormMeasureResult();
+                frmMeasureResult.frmClosed += new
+                FormMeasureResult.FormClosedEventHandler(frmMeasureResult_frmColsed);
+                frmMeasureResult.IbIMeasureResult.Text = "";
+                frmMeasureResult.Text = "距离量测";
+                frmMeasureResult.Show();
+            }
+            else
+            {
+                frmMeasureResult.Activate();
+            }
+        }
+
+        private void 面积量测_Click(object sender, EventArgs e)
+        {
+            axMapControl1.CurrentTool = null;
+            pMouseOperate = "MeasureArea";
+            axMapControl1.MousePointer = esriControlsMousePointer.esriPointerCrosshair;
+            if (frmMeasureResult == null || frmMeasureResult.IsDisposed)
+            {
+                frmMeasureResult = new FormMeasureResult();
+                frmMeasureResult.frmClosed += new
+                FormMeasureResult.FormClosedEventHandler(frmMeasureResult_frmColsed);
+                frmMeasureResult.IbIMeasureResult.Text = "";
+                frmMeasureResult.Text = "面积量测";
+                frmMeasureResult.Show();
+            }
+            else
+            {
+                frmMeasureResult.Activate();
+            }
+        }
+        #endregion
+
+        #region 定制化对话框
+        //初始化定制对话框的内容
+        private void CreateCusDialog()
+        {
+            //定义事件的接口
+            ICustomizeDialogEvents_Event pCusEvent = cd as ICustomizeDialogEvents_Event;
+            //实例化事件委托
+            startDialogE = new ICustomizeDialogEvents_OnStartDialogEventHandler(OnStartCusDialog);
+            closeDialogE = new ICustomizeDialogEvents_OnCloseDialogEventHandler(OnCloseCusDialog);
+
+            //将事件与委托绑定
+            pCusEvent.OnStartDialog += startDialogE;
+            pCusEvent.OnCloseDialog += closeDialogE;
+
+            cd.SetDoubleClickDestination(axToolbarControl1);
+        }
+        //关闭对话框的对话方法
+        private void OnCloseCusDialog()
+        {
+            axToolbarControl1.Customize = false;
+            chkCustomize.Checked = false;
+        }
+        //打开对话框的调用方法
+        private void OnStartCusDialog()
+        {
+            axToolbarControl1.Customize = true;
+            chkCustomize.Checked = true;
+        }
+
+        private void chkCustomize_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkCustomize.Checked == false)
+            {
+                cd.CloseDialog();
+            }
+            else
+            {
+                cd.StartDialog(axToolbarControl1.hWnd);
+            }
+        }
+        #endregion
+
+        #region 查询统计选项卡
+        private void 地图选择_Click(object sender, EventArgs e)
+        {
+            //实例化类
+            FormSelection formSelection = new FormSelection();
+            //主窗体控件赋值给CurrentMap属性
+            formSelection.CurrentMap = axMapControl1.Map;
+            if (axMapControl1.Map.SelectionCount == 0)
+            {
+                MessageBox.Show("主窗体检测到：当前没有选中任何要素！");
+            }
+            //显示该窗体
+            formSelection.Show();
+        }
+
+        private void 统计选择集_Click(object sender, EventArgs e)
+        {
+            //新建统计窗口
+            FormStatistics formStatistics = new FormStatistics();
+            //将当前主窗体中的MapControl1控件的Map对象赋值给FormStatistics窗体的CurrentMap属性，完成属性传递；
+            formStatistics.CurrentMap = axMapControl1.Map;
+            //显示统计窗体
+            formStatistics.Show();
+        }
+        #endregion
+
+        #region 编辑选项卡
+
+        //初始化编辑功能
+        private void InitObject()
+        {
+            try
+            {
+                ChangeButtonState(false);
+                pEngineEditor = new EngineEditorClass();
+                MapManager.EngineEditor = pEngineEditor;
+                pEngineEditTask = pEngineEditor as IEngineEditTask;
+                pEngineEditLayers = pEngineEditor as IEngineEditLayers;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        //编辑图层改变
+        private void ChangeButtonState(bool bEnable)
+        {
+            // 开始/结束按钮互斥
+            tsmStartEdit.Enabled = !bEnable;
+            tsmSaveEdit.Enabled = bEnable;
+            tsmEndEdit.Enabled = bEnable;
+
+            // 【修改点】不要禁用下拉框，让它始终可选
+            // 这样用户才能在开始编辑前选中一个图层
+            cmbSelLayer.Enabled = true;
+
+            tsmAddFeature.Enabled = bEnable;
+        }
+        //初始化编辑图层列表
+        private void InitComboBox(List<ILayer> plstLyr)
+        {
+
+            cmbSelLayer.Items.Clear();
+            for (int i = 0; i < plstLyr.Count; i++)
+            {
+                if (!cmbSelLayer.Items.Contains(plstLyr[i].Name))
+                {
+                    cmbSelLayer.Items.Add(plstLyr[i].Name);
+                }
+            }
+            if (cmbSelLayer.Items.Count != 0)
+                cmbSelLayer.SelectedIndex = 0;
+        }
+
+        //开始编辑事件
+        private void tsmStartEdit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // 1. 基础检查
+                if (axMapControl1.Map.LayerCount == 0)
+                {
+                    MessageBox.Show("当前没有加载任何图层！");
+                    return;
+                }
+
+                // 2. 【核心修改】这里不要再 InitComboBox 了！
+                // 直接检查用户有没有选图层
+                if (cmbSelLayer.SelectedItem == null)
+                {
+                    MessageBox.Show("请先在工具栏下拉框中选择一个要编辑的目标图层！\n(如果下拉框为空，请检查图层是否加载)", "提示");
+                    return;
+                }
+
+                // 3. 获取选中的图层
+                string layerName = cmbSelLayer.SelectedItem.ToString();
+                IFeatureLayer startLayer = MapManager.GetLayerByName(axMapControl1.Map, layerName) as IFeatureLayer;
+
+                if (startLayer == null)
+                {
+                    MessageBox.Show("无法获取选中的图层对象，请重新选择。");
+                    return;
+                }
+
+                IDataset pDataset = startLayer.FeatureClass as IDataset;
+                if (pDataset == null) return;
+                IWorkspace pWs = pDataset.Workspace;
+
+                // 4. 检查是否已经在编辑
+                if (pEngineEditor.EditState != esriEngineEditState.esriEngineStateNotEditing)
+                {
+                    MessageBox.Show("当前正在编辑中！");
+                    return;
+                }
+
+                // 5. 开始编辑会话
+                pEngineEditor.EnableUndoRedo(true);
+                pEngineEditor.StartEditing(pWs, axMapControl1.Map);
+
+                // 6. 设置任务和目标
+                IEngineEditTask pTask = pEngineEditor.GetTaskByUniqueName("ControlToolsEditing_CreateNewFeatureTask");
+                if (pTask != null) pEngineEditor.CurrentTask = pTask;
+
+                SetTargetLayerSafe(startLayer);
+                ChangeButtonState(true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("开始编辑失败: " + ex.Message);
+            }
+        }
+
+        //comboBox事件
+        private void toolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // 如果没有在编辑，或者控件没初始化，直接返回
+            if (pEngineEditor == null) return;
+
+            // 获取选中的图层
+            string sLyrName = cmbSelLayer.SelectedItem.ToString();
+            IFeatureLayer pSelectedLyr = MapManager.GetLayerByName(pMap, sLyrName) as IFeatureLayer;
+
+            if (pSelectedLyr == null) return;
+
+            // 如果正在编辑中，必须检查工作空间是否匹配！
+            if (pEngineEditor.EditState == esriEngineEditState.esriEngineStateEditing)
+            {
+                IDataset pDS = pSelectedLyr.FeatureClass as IDataset;
+                IWorkspace pLyrWs = pDS.Workspace;
+
+                // 获取当前编辑器绑定的工作空间
+                IWorkspace pEditWs = pEngineEditor.EditWorkspace; // 正确代码
+
+                // 比较两个工作空间是否相同 (比较连接字符串或路径)
+                if (pLyrWs.PathName != pEditWs.PathName)
+                {
+                    MessageBox.Show("无法切换目标图层！\n该图层与当前编辑会话不在同一个工作空间(Database/Folder)下。\n请先停止编辑。", "警告");
+
+                    // 可以考虑在这里把 ComboBox 选回原来的图层，防止用户困惑
+                    return;
+                }
+
+                // 工作空间一致，安全设置目标
+                SetTargetLayerSafe(pSelectedLyr);
+            }
+            else
+            {
+                // 如果没在编辑，仅仅记录一下当前选的图层变量即可
+                pCurrentLyr = pSelectedLyr;
+            }
+        }
+
+        // 封装一个安全设置目标图层的方法
+        private void SetTargetLayerSafe(IFeatureLayer layer)
+        {
+            try
+            {
+                if (pEngineEditLayers == null) return;
+                pEngineEditLayers.SetTargetLayer(layer, 0);
+                pCurrentLyr = layer; // 更新全局变量
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("设置目标图层失败: " + ex.Message);
+            }
+        }
+
+        //结束编辑事件
+        private void tsmEndEdit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (pEngineEditor.EditState == esriEngineEditState.esriEngineStateEditing)
+                {
+                    // 询问是否保存
+                    DialogResult dr = MessageBox.Show("是否保存已修改的数据？", "提示", MessageBoxButtons.YesNoCancel);
+
+                    if (dr == DialogResult.Cancel) return;
+
+                    bool save = (dr == DialogResult.Yes);
+
+                    // StopEditing 参数: true=保存并停止, false=丢弃并停止
+                    pEngineEditor.StopEditing(save);
+                }
+
+                axMapControl1.CurrentTool = null;
+                axMapControl1.MousePointer = esriControlsMousePointer.esriPointerDefault;
+                ChangeButtonState(false);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("停止编辑出错: " + ex.Message);
+            }
+        }
+
+        //保存编辑事件
+        private void tsmSaveEdit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (pEngineEditor.EditState == esriEngineEditState.esriEngineStateEditing)
+                {
+                    // true 表示只保存但不停止编辑
+                    //pEngineEditor.SaveEdits();
+                    MessageBox.Show("保存成功");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("保存失败: " + ex.Message);
+            }
+        }
+
+        //创建要素事件
+        private void 创建要素类ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (pEngineEditor.EditState != esriEngineEditState.esriEngineStateEditing)
+                {
+                    MessageBox.Show("请先开始编辑！");
+                    return;
+                }
+
+                // 使用 Command 是可以的，因为它是工具(Tool)
+                ICommand m_CreateFeatTool = new CreateFeatureToolClass();
+                m_CreateFeatTool.OnCreate(axMapControl1.Object);
+
+                // 确保工具可用
+                if (m_CreateFeatTool.Enabled)
+                {
+                    axMapControl1.CurrentTool = m_CreateFeatTool as ITool;
+                    m_CreateFeatTool.OnClick();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        #endregion
         #endregion
 
         #region 主窗体 鼠标点击事件
@@ -663,7 +1285,7 @@ namespace GIS_2310130172_Engine
         private void axMapControl2_OnMouseDown(object sender, IMapControlEvents2_OnMouseDownEvent e)
         {
             // 假设 EagleEyeMapConrol 引用的是 axMapControl2
-            if (EagleEyeMapConrol.Map.LayerCount > 0) // 有图层数据的情況
+            if (EagleEyeMapControl.Map.LayerCount > 0) // 有图层数据的情況
             {
                 // 判断鼠标左右键，按下鼠标左键移动矩形框
                 if (e.button == 1)
@@ -682,12 +1304,12 @@ namespace GIS_2310130172_Engine
                 // 按下鼠标右键绘制矩形框
                 else if (e.button == 2)
                 {
-                    IEnvelope pEnvelope = EagleEyeMapConrol.TrackRectangle();
+                    IEnvelope pEnvelope = EagleEyeMapControl.TrackRectangle();
                     IPoint pTempPoint = new PointClass();
                     pTempPoint.PutCoords(pEnvelope.XMin + pEnvelope.Width / 2, pEnvelope.YMin + pEnvelope.Height / 2);
-                    EagleEyeMapConrol.Extent = pEnvelope;
+                    EagleEyeMapControl.Extent = pEnvelope;
                     // 矩形框的高宽和数据视图的高宽不一定成正比，这里做一个中心调整；
-                    EagleEyeMapConrol.CenterAt(pTempPoint);
+                    EagleEyeMapControl.CenterAt(pTempPoint);
                 }
             }
         }
@@ -713,11 +1335,11 @@ namespace GIS_2310130172_Engine
         private void SynchronizeAxMapControl2()
         {
             //先清除已有图层
-            if (EagleEyeMapConrol.LayerCount > 0 )
+            if (EagleEyeMapControl.LayerCount > 0 )
             {
-                EagleEyeMapConrol.ClearLayers();
+                EagleEyeMapControl.ClearLayers();
             }
-            EagleEyeMapConrol.SpatialReference = axMapControl1.SpatialReference;
+            EagleEyeMapControl.SpatialReference = axMapControl1.SpatialReference;
             //遍历主控件的图层
             for (int i = axMapControl1.LayerCount - 1; i >= 0; i--)
             {
@@ -732,7 +1354,7 @@ namespace GIS_2310130172_Engine
                         IFeatureLayer pFeatureLayer = pSubLayer as IFeatureLayer;
                         if (pFeatureLayer.FeatureClass.ShapeType != esriGeometryType.esriGeometryPoint && pFeatureLayer.FeatureClass.ShapeType != esriGeometryType.esriGeometryMultipoint)
                         {
-                            EagleEyeMapConrol.AddLayer(pSubLayer);
+                            EagleEyeMapControl.AddLayer(pSubLayer);
                         }
                     }
                 }
@@ -742,20 +1364,20 @@ namespace GIS_2310130172_Engine
                     IFeatureLayer pFeatureLayer = pLayer as IFeatureLayer;
                     if (pFeatureLayer.FeatureClass.ShapeType != esriGeometryType.esriGeometryPoint && pFeatureLayer.FeatureClass.ShapeType != esriGeometryType.esriGeometryMultipoint)
                     {
-                        EagleEyeMapConrol.AddLayer(pLayer);
+                        EagleEyeMapControl.AddLayer(pLayer);
                     }
                 }
-                EagleEyeMapConrol.Extent = axMapControl1.FullExtent;
+                EagleEyeMapControl.Extent = axMapControl1.FullExtent;
                 pEnv = axMapControl1.Extent as IEnvelope;
                 DrawRectangle(pEnv);
-                EagleEyeMapConrol.ActiveView.Refresh();
+                EagleEyeMapControl.ActiveView.Refresh();
             }
         }
         //绘制矩形框的方法
         private void DrawRectangle(IEnvelope pEnv)
         {
             //清除鹰眼控件的图形元素
-            IGraphicsContainer pGraphicsContainer = EagleEyeMapConrol.Map as IGraphicsContainer;
+            IGraphicsContainer pGraphicsContainer = EagleEyeMapControl.Map as IGraphicsContainer;
             pGraphicsContainer.DeleteAllElements();
             IActiveView pActiveView = pGraphicsContainer as IActiveView;
             //得到当前试图范围
@@ -800,14 +1422,14 @@ namespace GIS_2310130172_Engine
             if (e.mapX > pEnv.XMin && e.mapY > pEnv.YMin && e.mapX < pEnv.XMax && e.mapY < pEnv.YMax)
             {
                 // 鼠标在矩形框内部，显示小手
-                EagleEyeMapConrol.MousePointer = esriControlsMousePointer.esriPointerHand;
+                EagleEyeMapControl.MousePointer = esriControlsMousePointer.esriPointerHand;
 
                 // 注意：这里不用处理 e.button == 2 的逻辑
             }
             else
             {
                 // 鼠标在其他位置，显示默认样式
-                EagleEyeMapConrol.MousePointer = esriControlsMousePointer.esriPointerDefault;
+                EagleEyeMapControl.MousePointer = esriControlsMousePointer.esriPointerDefault;
             }
 
             // 2. 拖动逻辑
@@ -835,7 +1457,7 @@ namespace GIS_2310130172_Engine
                 this.axMapControl1.ActiveView.PartialRefresh(esriViewDrawPhase.esriViewGeography, null, null);
 
                 // 刷新鹰眼视图的图形层（显示移动后的矩形）
-                EagleEyeMapConrol.ActiveView.PartialRefresh(esriViewDrawPhase.esriViewForeground, null, null);
+                EagleEyeMapControl.ActiveView.PartialRefresh(esriViewDrawPhase.esriViewForeground, null, null);
             }
         }
 
@@ -1112,17 +1734,18 @@ namespace GIS_2310130172_Engine
         //}
         #endregion
 
-        #region 右击图层菜单的5个事件
+        #region TOC 内容列表2:右击图层菜单的5个事件
         //右击属性表
         private void btnAttribute_Click(object sender, EventArgs e)
         {
-            if (frmattirbute == null || frmattirbute.IsDisposed)
+            if (frmattribute == null || frmattribute.IsDisposed)
             {
-                frmattirbute = new 自定义窗体控件_FormAttribute.FormAttribute();
+                frmattribute = new 自定义窗体控件_FormAttribute.FormAttribute();
             }
-            frmattirbute.CurFeatureLayer = pTocFeatureLayer;
-            frmattirbute.InitUI();
-            frmattirbute.ShowDialog();
+            frmattribute.CurFeatureLayer = pTocFeatureLayer;
+            frmattribute.m_activeView = axMapControl1.ActiveView;//传入视图
+            frmattribute.InitUI();
+            frmattribute.ShowDialog();
         }
         //右击缩放图层
         private void btnZoomToLayer_Click(object sender, EventArgs e)
@@ -1154,48 +1777,6 @@ namespace GIS_2310130172_Engine
         {
             pTocFeatureLayer.Selectable = false;
             btnLayerUnSel.Enabled = !btnLayerUnSel.Enabled;
-        }
-        #endregion
-
-        #region 定制化对话框
-        //初始化定制对话框的内容
-        private void CreateCusDialog()
-        {
-            //定义事件的接口
-            ICustomizeDialogEvents_Event pCusEvent = cd as ICustomizeDialogEvents_Event;
-            //实例化事件委托
-            startDialogE = new ICustomizeDialogEvents_OnStartDialogEventHandler(OnStartCusDialog);
-            closeDialogE = new ICustomizeDialogEvents_OnCloseDialogEventHandler(OnCloseCusDialog);
-
-            //将事件与委托绑定
-            pCusEvent.OnStartDialog += startDialogE;
-            pCusEvent.OnCloseDialog += closeDialogE;
-
-            cd.SetDoubleClickDestination(axToolbarControl1);
-        }
-        //关闭对话框的对话方法
-        private void OnCloseCusDialog()
-        {
-            axToolbarControl1.Customize = false;
-            chkCustomize.Checked = false;
-        }
-        //打开对话框的调用方法
-        private void OnStartCusDialog()
-        {
-            axToolbarControl1.Customize = true;
-            chkCustomize.Checked = true;
-        }
-        
-        private void chkCustomize_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chkCustomize.Checked == false)
-            {
-                cd.CloseDialog();
-            }
-            else
-            {
-                cd.StartDialog(axToolbarControl1.hWnd);
-            }
         }
         #endregion
 
@@ -1368,393 +1949,6 @@ namespace GIS_2310130172_Engine
         }
         #endregion
 
-        #region 地图导出两个选项
-        private void 局部导出ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            axMapControl1.CurrentTool = null;
-            axMapControl1.MousePointer = esriControlsMousePointer.esriPointerCrosshair;
-            pMouseOperate = "ExportRegion";
-        }
-
-        private void 全局导出ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //frmExpMap 以声明为全局变量
-            if (frmExpMap == null || frmExpMap.IsDisposed)
-            {
-                frmExpMap = new FormExportMap(axMapControl1);
-            }
-            frmExpMap.IsRegion = false;
-            frmExpMap.GetGeometry = axMapControl1.ActiveView.Extent;
-            frmExpMap.Show();
-            frmExpMap.Activate();
-        }
-        #endregion
-
-        #region 地图量测选项
-
-        //窗体关闭函数
-        private void frmMeasureResult_frmColsed()
-        {
-            //清空线对象
-            if (pNewLineFeedback != null)
-            {
-            pNewLineFeedback.Stop();
-            pNewLineFeedback = null;
-            }
-            //清空面对象
-            if (pNewPolygonFeedback != null)
-            {
-            pNewPolygonFeedback.Stop();
-            pNewPolygonFeedback = null;
-            pAreaPointCol.RemovePoints(0, pAreaPointCol.PointCount); //清空点集中所有点
-            }
-            //清空量算画的线、面对象
-            axMapControl1.ActiveView.PartialRefresh(esriViewDrawPhase.esriViewForeground, null, null);
-            //结束量算功能
-            pMouseOperate = string.Empty;
-            axMapControl1.MousePointer = esriControlsMousePointer.esriPointerDefault;
-        }
-
-        private void axMapControl1_OnDoubleClick(object sender, IMapControlEvents2_OnDoubleClickEvent e)
-        {
-            string SMapUnits = GetMapUnits(axMapControl1.Map.MapUnits);
-            #region 长度量算
-            if (pMouseOperate == "MeasureLength")
-            {
-                if (frmMeasureResult != null)
-                {
-                    frmMeasureResult.IbIMeasureResult.Text = "线段总长度为： " + dToltalLength + SMapUnits;
-                }
-                if (pNewLineFeedback != null)
-                {
-                    pNewLineFeedback.Stop();
-                    pNewLineFeedback = null;
-                    //清空所画的线对象
-                    (axMapControl1.Map as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewForeground, null, null);
-                }
-                dToltalLength = 0;
-                dSegmentLength = 0;
-            }
-            #endregion
-            
-            #region 面积量算
-            if (pMouseOperate == "MeasureArea")
-            {
-            if (pNewPolygonFeedback != null)
-            {
-            pNewPolygonFeedback.Stop();
-            pNewPolygonFeedback = null;
-            //清空所画的线对象
-            (axMapControl1.Map as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewForeground, null, null);
-            }
-            pAreaPointCol.RemovePoints(0, pAreaPointCol.PointCount); //清空点集中所有点
-            }
-            #endregion
-        }
-
-        private void 距离量测_Click(object sender, EventArgs e)
-        {
-            axMapControl1.CurrentTool = null;
-            pMouseOperate = "MeasureLength";
-            axMapControl1.MousePointer = esriControlsMousePointer.esriPointerCrosshair;
-            if (frmMeasureResult == null || frmMeasureResult.IsDisposed)
-            {
-                frmMeasureResult = new FormMeasureResult();
-                frmMeasureResult.frmClosed += new
-                FormMeasureResult.FormClosedEventHandler(frmMeasureResult_frmColsed);
-                frmMeasureResult.IbIMeasureResult.Text = "";
-                frmMeasureResult.Text = "距离量测";
-                frmMeasureResult.Show();
-            }
-            else
-            {
-                frmMeasureResult.Activate();
-            }
-        }
-
-        private void 面积量测_Click(object sender, EventArgs e)
-        {
-            axMapControl1.CurrentTool = null;
-            pMouseOperate = "MeasureArea";
-            axMapControl1.MousePointer = esriControlsMousePointer.esriPointerCrosshair;
-            if (frmMeasureResult == null || frmMeasureResult.IsDisposed)
-            {
-                frmMeasureResult = new FormMeasureResult();
-                frmMeasureResult.frmClosed += new
-                FormMeasureResult.FormClosedEventHandler(frmMeasureResult_frmColsed);
-                frmMeasureResult.IbIMeasureResult.Text = "";
-                frmMeasureResult.Text = "面积量测";
-                frmMeasureResult.Show();
-            }
-            else
-            {
-                frmMeasureResult.Activate();
-            }
-        }
-        #endregion
-
-        #region 查询统计
-        private void 地图选择_Click(object sender, EventArgs e)
-        {
-            //实例化类
-            FormSelection formSelection = new FormSelection();
-            //主窗体控件赋值给CurrentMap属性
-            formSelection.CurrentMap = axMapControl1.Map;
-            if (axMapControl1.Map.SelectionCount == 0)
-            {
-                MessageBox.Show("主窗体检测到：当前没有选中任何要素！");
-            }
-            //显示该窗体
-            formSelection.Show();
-        }
-
-        private void 统计选择集_Click(object sender, EventArgs e)
-        {
-            //新建统计窗口
-            FormStatistics formStatistics = new FormStatistics();
-            //将当前主窗体中的MapControl1控件的Map对象赋值给FormStatistics窗体的CurrentMap属性，完成属性传递；
-            formStatistics.CurrentMap = axMapControl1.Map;
-            //显示统计窗体
-            formStatistics.Show();
-        }
-        #endregion
-
-        #region 编辑功能
-        
-        //初始化编辑功能
-        private void InitObject()
-        {
-            try
-            {
-                ChangeButtonState(false);
-                pEngineEditor = new EngineEditorClass();
-                MapManager.EngineEditor = pEngineEditor;
-                pEngineEditTask = pEngineEditor as IEngineEditTask;
-                pEngineEditLayers = pEngineEditor as IEngineEditLayers;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
-        //编辑图层改变
-        private void ChangeButtonState(bool bEnable)
-        {
-            // 开始/结束按钮互斥
-            tsmStartEdit.Enabled = !bEnable;
-            tsmSaveEdit.Enabled = bEnable;
-            tsmEndEdit.Enabled = bEnable;
-
-            // 【修改点】不要禁用下拉框，让它始终可选
-            // 这样用户才能在开始编辑前选中一个图层
-            cmbSelLayer.Enabled = true;
-
-            tsmAddFeature.Enabled = bEnable;
-        }
-        //初始化编辑图层列表
-        private void InitComboBox(List<ILayer> plstLyr)
-        {
-
-            cmbSelLayer.Items.Clear();
-            for (int i = 0; i < plstLyr.Count; i++)
-            {
-                if (!cmbSelLayer.Items.Contains(plstLyr[i].Name))
-                {
-                    cmbSelLayer.Items.Add(plstLyr[i].Name);
-                }
-            }
-            if (cmbSelLayer.Items.Count != 0)
-                cmbSelLayer.SelectedIndex = 0;
-        }
-
-        //开始编辑事件
-        private void tsmStartEdit_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // 1. 基础检查
-                if (axMapControl1.Map.LayerCount == 0)
-                {
-                    MessageBox.Show("当前没有加载任何图层！");
-                    return;
-                }
-
-                // 2. 【核心修改】这里不要再 InitComboBox 了！
-                // 直接检查用户有没有选图层
-                if (cmbSelLayer.SelectedItem == null)
-                {
-                    MessageBox.Show("请先在工具栏下拉框中选择一个要编辑的目标图层！\n(如果下拉框为空，请检查图层是否加载)", "提示");
-                    return;
-                }
-
-                // 3. 获取选中的图层
-                string layerName = cmbSelLayer.SelectedItem.ToString();
-                IFeatureLayer startLayer = MapManager.GetLayerByName(axMapControl1.Map, layerName) as IFeatureLayer;
-
-                if (startLayer == null)
-                {
-                    MessageBox.Show("无法获取选中的图层对象，请重新选择。");
-                    return;
-                }
-
-                IDataset pDataset = startLayer.FeatureClass as IDataset;
-                if (pDataset == null) return;
-                IWorkspace pWs = pDataset.Workspace;
-
-                // 4. 检查是否已经在编辑
-                if (pEngineEditor.EditState != esriEngineEditState.esriEngineStateNotEditing)
-                {
-                    MessageBox.Show("当前正在编辑中！");
-                    return;
-                }
-
-                // 5. 开始编辑会话
-                pEngineEditor.EnableUndoRedo(true);
-                pEngineEditor.StartEditing(pWs, axMapControl1.Map);
-
-                // 6. 设置任务和目标
-                IEngineEditTask pTask = pEngineEditor.GetTaskByUniqueName("ControlToolsEditing_CreateNewFeatureTask");
-                if (pTask != null) pEngineEditor.CurrentTask = pTask;
-
-                SetTargetLayerSafe(startLayer);
-                ChangeButtonState(true);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("开始编辑失败: " + ex.Message);
-            }
-        }
-
-        //comboBox事件
-        private void toolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // 如果没有在编辑，或者控件没初始化，直接返回
-            if (pEngineEditor == null) return;
-
-            // 获取选中的图层
-            string sLyrName = cmbSelLayer.SelectedItem.ToString();
-            IFeatureLayer pSelectedLyr = MapManager.GetLayerByName(pMap, sLyrName) as IFeatureLayer;
-
-            if (pSelectedLyr == null) return;
-
-            // 如果正在编辑中，必须检查工作空间是否匹配！
-            if (pEngineEditor.EditState == esriEngineEditState.esriEngineStateEditing)
-            {
-                IDataset pDS = pSelectedLyr.FeatureClass as IDataset;
-                IWorkspace pLyrWs = pDS.Workspace;
-
-                // 获取当前编辑器绑定的工作空间
-                IWorkspace pEditWs = pEngineEditor.EditWorkspace; // 正确代码
-
-                // 比较两个工作空间是否相同 (比较连接字符串或路径)
-                if (pLyrWs.PathName != pEditWs.PathName)
-                {
-                    MessageBox.Show("无法切换目标图层！\n该图层与当前编辑会话不在同一个工作空间(Database/Folder)下。\n请先停止编辑。", "警告");
-
-                    // 可以考虑在这里把 ComboBox 选回原来的图层，防止用户困惑
-                    return;
-                }
-
-                // 工作空间一致，安全设置目标
-                SetTargetLayerSafe(pSelectedLyr);
-            }
-            else
-            {
-                // 如果没在编辑，仅仅记录一下当前选的图层变量即可
-                pCurrentLyr = pSelectedLyr;
-            }
-        }
-
-        // 封装一个安全设置目标图层的方法
-        private void SetTargetLayerSafe(IFeatureLayer layer)
-        {
-            try
-            {
-                if (pEngineEditLayers == null) return;
-                pEngineEditLayers.SetTargetLayer(layer, 0);
-                pCurrentLyr = layer; // 更新全局变量
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("设置目标图层失败: " + ex.Message);
-            }
-        }
-        
-        //结束编辑事件
-        private void tsmEndEdit_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (pEngineEditor.EditState == esriEngineEditState.esriEngineStateEditing)
-                {
-                    // 询问是否保存
-                    DialogResult dr = MessageBox.Show("是否保存已修改的数据？", "提示", MessageBoxButtons.YesNoCancel);
-
-                    if (dr == DialogResult.Cancel) return;
-
-                    bool save = (dr == DialogResult.Yes);
-
-                    // StopEditing 参数: true=保存并停止, false=丢弃并停止
-                    pEngineEditor.StopEditing(save);
-                }
-
-                axMapControl1.CurrentTool = null;
-                axMapControl1.MousePointer = esriControlsMousePointer.esriPointerDefault;
-                ChangeButtonState(false);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("停止编辑出错: " + ex.Message);
-            }
-        }
-
-        //保存编辑事件
-        private void tsmSaveEdit_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (pEngineEditor.EditState == esriEngineEditState.esriEngineStateEditing)
-                {
-                    // true 表示只保存但不停止编辑
-                    //pEngineEditor.SaveEdits();
-                    MessageBox.Show("保存成功");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("保存失败: " + ex.Message);
-            }
-        }
-
-        //创建要素事件
-        private void 创建要素类ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (pEngineEditor.EditState != esriEngineEditState.esriEngineStateEditing)
-                {
-                    MessageBox.Show("请先开始编辑！");
-                    return;
-                }
-
-                // 使用 Command 是可以的，因为它是工具(Tool)
-                ICommand m_CreateFeatTool = new CreateFeatureToolClass();
-                m_CreateFeatTool.OnCreate(axMapControl1.Object);
-
-                // 确保工具可用
-                if (m_CreateFeatTool.Enabled)
-                {
-                    axMapControl1.CurrentTool = m_CreateFeatTool as ITool;
-                    m_CreateFeatTool.OnClick();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-        #endregion
-
         #region 地图浏览
         private void 地图制作ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1768,10 +1962,6 @@ namespace GIS_2310130172_Engine
                 ICommand pPanTool = new ESRI.ArcGIS.Controls.ControlsMapPanToolClass();
                 pPanTool.OnCreate(axMapControl1.Object);
                 axMapControl1.CurrentTool = pPanTool as ITool;
-
-                // 注意：一旦设置了 CurrentTool 为 PanTool，
-                // MapControl 会优先响应工具的事件，自定义的 OnMouseDown 基本就被屏蔽了。
-                // 但为了双重保险，我们在 OnMouseDown 里还是要做判断。
             }
             catch (Exception ex)
             {

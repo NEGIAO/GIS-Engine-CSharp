@@ -23,4 +23,3 @@ C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\Engine_Dev\自定义窗体控�
 C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\Engine_Dev\自定义窗体控件_Add_txt\obj\Debug\自定义窗体控件_Add_txt.csproj.GenerateResource.Cache
 C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\Engine_Dev\自定义窗体控件_Add_txt\obj\Debug\自定义窗体控件_Add_txt.exe
 C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\Engine_Dev\自定义窗体控件_Add_txt\obj\Debug\自定义窗体控件_Add_txt.pdb
-C:\Users\NEGIAO\Desktop\arcgis_engine\add_in_9_16\Engine_Dev\自定义窗体控件_Add_txt\obj\Debug\自定义窗体控件_Add_txt.csprojResolveAssemblyReference.cache

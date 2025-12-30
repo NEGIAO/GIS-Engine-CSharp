@@ -82,7 +82,7 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.axTOCControl1 = new ESRI.ArcGIS.Controls.AxTOCControl();
-            this.EagleEyeMapConrol = new ESRI.ArcGIS.Controls.AxMapControl();
+            this.EagleEyeMapControl = new ESRI.ArcGIS.Controls.AxMapControl();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.axMapControl1 = new ESRI.ArcGIS.Controls.AxMapControl();
@@ -102,6 +102,8 @@
             this.btnLayerSel = new System.Windows.Forms.ToolStripMenuItem();
             this.btnLayerUnSel = new System.Windows.Forms.ToolStripMenuItem();
             this.axToolbarControl1 = new ESRI.ArcGIS.Controls.AxToolbarControl();
+            this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
+            this.地图打印ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -113,7 +115,7 @@
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axTOCControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EagleEyeMapConrol)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EagleEyeMapControl)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axMapControl1)).BeginInit();
@@ -149,7 +151,8 @@
             this.新建地图ToolStripMenuItem,
             this.另存地图ToolStripMenuItem,
             this.toolStripSeparator1,
-            this.添加数据ToolStripMenuItem1});
+            this.添加数据ToolStripMenuItem1,
+            this.地图打印ToolStripMenuItem});
             this.添加数据ToolStripMenuItem.Name = "添加数据ToolStripMenuItem";
             this.添加数据ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.添加数据ToolStripMenuItem.Text = "文件";
@@ -157,39 +160,44 @@
             // 保存地图ToolStripMenuItem
             // 
             this.保存地图ToolStripMenuItem.Name = "保存地图ToolStripMenuItem";
-            this.保存地图ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.保存地图ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.保存地图ToolStripMenuItem.Text = "保存地图";
+            this.保存地图ToolStripMenuItem.Click += new System.EventHandler(this.保存地图ToolStripMenuItem_Click);
             // 
             // 加载地图ToolStripMenuItem
             // 
             this.加载地图ToolStripMenuItem.Name = "加载地图ToolStripMenuItem";
-            this.加载地图ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.加载地图ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.加载地图ToolStripMenuItem.Text = "加载地图";
+            this.加载地图ToolStripMenuItem.Click += new System.EventHandler(this.加载地图ToolStripMenuItem_Click);
             // 
             // 新建地图ToolStripMenuItem
             // 
             this.新建地图ToolStripMenuItem.Name = "新建地图ToolStripMenuItem";
-            this.新建地图ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.新建地图ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.新建地图ToolStripMenuItem.Text = "新建地图";
+            this.新建地图ToolStripMenuItem.Click += new System.EventHandler(this.新建地图ToolStripMenuItem_Click);
             // 
             // 另存地图ToolStripMenuItem
             // 
             this.另存地图ToolStripMenuItem.Name = "另存地图ToolStripMenuItem";
-            this.另存地图ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.另存地图ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.另存地图ToolStripMenuItem.Text = "另存地图";
+            this.另存地图ToolStripMenuItem.Click += new System.EventHandler(this.另存地图ToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(121, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
             // 
             // 添加数据ToolStripMenuItem1
             // 
             this.添加数据ToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.局部导出ToolStripMenuItem,
-            this.全局导出ToolStripMenuItem});
+            this.全局导出ToolStripMenuItem,
+            this.toolStripSeparator11});
             this.添加数据ToolStripMenuItem1.Name = "添加数据ToolStripMenuItem1";
-            this.添加数据ToolStripMenuItem1.Size = new System.Drawing.Size(124, 22);
+            this.添加数据ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.添加数据ToolStripMenuItem1.Text = "导出地图";
             // 
             // 局部导出ToolStripMenuItem
@@ -529,7 +537,7 @@
             // 
             // splitContainer2.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.EagleEyeMapConrol);
+            this.splitContainer2.Panel2.Controls.Add(this.EagleEyeMapControl);
             this.splitContainer2.Size = new System.Drawing.Size(220, 533);
             this.splitContainer2.SplitterDistance = 348;
             this.splitContainer2.TabIndex = 0;
@@ -548,15 +556,15 @@
             // 
             // EagleEyeMapConrol
             // 
-            this.EagleEyeMapConrol.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.EagleEyeMapConrol.Location = new System.Drawing.Point(0, 0);
-            this.EagleEyeMapConrol.Name = "EagleEyeMapConrol";
-            this.EagleEyeMapConrol.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("EagleEyeMapConrol.OcxState")));
-            this.EagleEyeMapConrol.Size = new System.Drawing.Size(220, 181);
-            this.EagleEyeMapConrol.TabIndex = 0;
-            this.EagleEyeMapConrol.OnMouseDown += new ESRI.ArcGIS.Controls.IMapControlEvents2_Ax_OnMouseDownEventHandler(this.axMapControl2_OnMouseDown);
-            this.EagleEyeMapConrol.OnMouseUp += new ESRI.ArcGIS.Controls.IMapControlEvents2_Ax_OnMouseUpEventHandler(this.EagleEyeMapConrol_OnMouseUp);
-            this.EagleEyeMapConrol.OnMouseMove += new ESRI.ArcGIS.Controls.IMapControlEvents2_Ax_OnMouseMoveEventHandler(this.EagleEyeMapConrol_OnMouseMove);
+            this.EagleEyeMapControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.EagleEyeMapControl.Location = new System.Drawing.Point(0, 0);
+            this.EagleEyeMapControl.Name = "EagleEyeMapConrol";
+            this.EagleEyeMapControl.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("EagleEyeMapConrol.OcxState")));
+            this.EagleEyeMapControl.Size = new System.Drawing.Size(220, 181);
+            this.EagleEyeMapControl.TabIndex = 0;
+            this.EagleEyeMapControl.OnMouseDown += new ESRI.ArcGIS.Controls.IMapControlEvents2_Ax_OnMouseDownEventHandler(this.axMapControl2_OnMouseDown);
+            this.EagleEyeMapControl.OnMouseUp += new ESRI.ArcGIS.Controls.IMapControlEvents2_Ax_OnMouseUpEventHandler(this.EagleEyeMapConrol_OnMouseUp);
+            this.EagleEyeMapControl.OnMouseMove += new ESRI.ArcGIS.Controls.IMapControlEvents2_Ax_OnMouseMoveEventHandler(this.EagleEyeMapConrol_OnMouseMove);
             // 
             // tabControl1
             // 
@@ -703,6 +711,17 @@
             this.axToolbarControl1.Size = new System.Drawing.Size(918, 28);
             this.axToolbarControl1.TabIndex = 2;
             // 
+            // toolStripSeparator11
+            // 
+            this.toolStripSeparator11.Name = "toolStripSeparator11";
+            this.toolStripSeparator11.Size = new System.Drawing.Size(149, 6);
+            // 
+            // 地图打印ToolStripMenuItem
+            // 
+            this.地图打印ToolStripMenuItem.Name = "地图打印ToolStripMenuItem";
+            this.地图打印ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.地图打印ToolStripMenuItem.Text = "地图打印";
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -733,7 +752,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.axTOCControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EagleEyeMapConrol)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EagleEyeMapControl)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.axMapControl1)).EndInit();
@@ -763,7 +782,7 @@
         private ESRI.ArcGIS.Controls.AxMapControl axMapControl1;
         private System.Windows.Forms.TabPage tabPage2;
         private ESRI.ArcGIS.Controls.AxPageLayoutControl axPageLayoutControl1;
-        private ESRI.ArcGIS.Controls.AxMapControl EagleEyeMapConrol;
+        private ESRI.ArcGIS.Controls.AxMapControl EagleEyeMapControl;
         private ESRI.ArcGIS.Controls.AxLicenseControl axLicenseControl1;
         private System.Windows.Forms.ToolStripMenuItem 保存地图ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 加载地图ToolStripMenuItem;
@@ -821,6 +840,8 @@
         private System.Windows.Forms.ToolStripComboBox cmbSelLayer;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
+        private System.Windows.Forms.ToolStripMenuItem 地图打印ToolStripMenuItem;
     }
 }
 
