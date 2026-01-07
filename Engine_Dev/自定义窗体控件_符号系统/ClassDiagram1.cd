@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="自定义窗体控件_符号系统.FormSymbolize">
+    <Position X="0.5" Y="0.5" Width="3.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="自定义窗体控件_符号系统.FormSymbolize.LayerItem">
+        <TypeIdentifier>
+          <NewMemberFileName>Form1.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAABAQAgAABgAAEAACAACIAACAAgAACAAAAAAAEA=</HashCode>
+      <FileName>Form1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="自定义窗体控件_符号系统.SymbologyHelper">
+    <Position X="4.5" Y="0.5" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="自定义窗体控件_符号系统.SymbologyHelper.ColorStyle">
+        <TypeIdentifier>
+          <NewMemberFileName>SymbologyHelper.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="自定义窗体控件_符号系统.SymbologyHelper.ClassifyMethod">
+        <TypeIdentifier>
+          <NewMemberFileName>SymbologyHelper.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>SymbologyHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>

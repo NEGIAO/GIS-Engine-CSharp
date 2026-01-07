@@ -53,6 +53,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormAttribute";
             this.Text = "属性窗口";
+            this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.dataGridAttribute)).EndInit();
             this.ResumeLayout(false);
 

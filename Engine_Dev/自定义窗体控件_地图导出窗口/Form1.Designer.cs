@@ -211,6 +211,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormExportMap";
             this.Text = "导出地图界面";
+            this.TopMost = true;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormExportMap_FormClosed);
             this.Load += new System.EventHandler(this.FormExportMap_Load);
             this.groupBox1.ResumeLayout(false);

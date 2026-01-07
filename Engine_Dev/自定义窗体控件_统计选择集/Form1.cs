@@ -12,7 +12,7 @@ namespace 自定义窗体控件_统计选择集
     {
         private IMap currentMap;
 
-        // 【修改1】使用 List 代替 Hashtable，通过索引直接获取对象，避免重名冲突和查找失败
+        // 使用 List，通过索引直接获取对象
         private List<IFeatureLayer> layerList;
 
         private IFeatureLayer currentFeatureLayer = null;
@@ -69,8 +69,7 @@ namespace 自定义窗体控件_统计选择集
             // 显示统计概况
             labelSelection.Text = string.Format("当前地图选择集共有 {0} 个图层的 {1} 个要素被选中。", layersCount, allSelectedFeatures);
 
-            // 【关键】选中第一个图层，这将自动触发 comboBoxLayers_SelectedIndexChanged 事件
-            // 从而自动给 currentFeatureLayer 赋值
+            // 自动给 currentFeatureLayer 赋值
             if (comboBoxLayers.Items.Count > 0)
             {
                 comboBoxLayers.SelectedIndex = 0;
@@ -146,7 +145,6 @@ namespace 自定义窗体控件_统计选择集
         }
 
         // 当“字段”下拉框发生变化时 -> 执行统计计算
-        // 注意：这里的方法名对应的是 comboxBoxFeilds (字段控件)
         private void comboBoxFeilds_SelectedIndexChanged(object sender, EventArgs e)
         {
             // 安全检查：图层或字段为空则不执行

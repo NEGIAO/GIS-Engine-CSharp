@@ -57,10 +57,7 @@ namespace 自定义窗体控件_地图导出窗口
             }
             else
             {
-                // 可选：如果传入的控件为空，可以抛出异常或进行日志记录
-                MessageBox.Show("错误：未传入有效的地图控件！", "初始化失败",
-                                System.Windows.Forms.MessageBoxButtons.OK,
-                                System.Windows.Forms.MessageBoxIcon.Error);
+                MessageBox.Show("错误：未传入有效的地图控件！", "初始化失败",System.Windows.Forms.MessageBoxButtons.OK,System.Windows.Forms.MessageBoxIcon.Error);
             }
         }
 

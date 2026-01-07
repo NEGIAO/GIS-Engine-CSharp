@@ -57,12 +57,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(539, 145);
+            this.ClientSize = new System.Drawing.Size(776, 276);
             this.Controls.Add(this.IbIResult);
             this.Controls.Add(this.IbIMeasureResult);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormMeasureResult";
             this.Text = "测量结果";
+            this.TopMost = true;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMeasureResult_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();

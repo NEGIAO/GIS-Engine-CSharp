@@ -91,7 +91,7 @@
             // 
             this.labelSelection.AutoSize = true;
             this.labelSelection.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelSelection.Location = new System.Drawing.Point(144, 9);
+            this.labelSelection.Location = new System.Drawing.Point(131, 25);
             this.labelSelection.Name = "labelSelection";
             this.labelSelection.Size = new System.Drawing.Size(409, 20);
             this.labelSelection.TabIndex = 3;
@@ -129,6 +129,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormStatistics";
             this.Text = "统计选择集";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.FormStatistics_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

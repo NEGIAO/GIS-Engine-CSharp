@@ -133,7 +133,8 @@
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "载入数据";
+            this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();
 

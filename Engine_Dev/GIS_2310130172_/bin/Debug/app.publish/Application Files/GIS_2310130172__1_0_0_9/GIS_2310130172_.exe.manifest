@@ -1,0 +1,616 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="GIS_2310130172_.exe" version="1.0.0.9" publicKeyToken="714d7816f2411a89" language="neutral" processorArchitecture="msil" type="win32" />
+  <description asmv2:iconFile="avatar_24x24.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="GIS_2310130172_" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="GIS_2310130172_.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC 清单选项
+          如果要更改 Windows 用户帐户控制级别，请用以下节点之一替换
+          requestedExecutionLevel 节点。
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+          如果要利用文件和注册表虚拟化提供
+          向后兼容性，请删除 requestedExecutionLevel 节点。
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ESRI.ArcGIS.3DAnalyst.dll" size="245760">
+      <assemblyIdentity name="ESRI.ArcGIS.3DAnalyst" version="10.2.0.0" publicKeyToken="8FC3CC631E44AD86" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>rlk+l9rvoXQr0mTviZXwEkGYtAIk+uQMOg8X6JLlEpI=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ESRI.ArcGIS.ADF.Local.dll" size="166400">
+      <assemblyIdentity name="ESRI.ArcGIS.ADF.Local" version="10.2.0.0" publicKeyToken="8FC3CC631E44AD86" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>uhIZf2XIRc46lgd+iTqLuEkKh4NwfyTIEbhroUmjlTw=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ESRI.ArcGIS.Animation.dll" size="86016">
+      <assemblyIdentity name="ESRI.ArcGIS.Animation" version="10.2.0.0" publicKeyToken="8FC3CC631E44AD86" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>77GROvvrR/OciMrF+4euaNT9ykJRoZcgrk8eIUy/RKM=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ESRI.ArcGIS.ArcMap.dll" size="32768">
+      <assemblyIdentity name="ESRI.ArcGIS.ArcMap" version="10.2.0.0" publicKeyToken="8FC3CC631E44AD86" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>cyLL7HXr028Z4O6OHixR5QcNmlhKgkdoEVFDAAdicfA=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ESRI.ArcGIS.ArcMapUI.dll" size="303104">
+      <assemblyIdentity name="ESRI.ArcGIS.ArcMapUI" version="10.2.0.0" publicKeyToken="8FC3CC631E44AD86" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>zkkfnAkU9vIHBd7m6cgk9AKr4TjCQ766HZQJ1Ar2wTI=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ESRI.ArcGIS.AxControls.dll" size="118784">
+      <assemblyIdentity name="ESRI.ArcGIS.AxControls" version="10.2.0.0" publicKeyToken="8FC3CC631E44AD86" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>zgJYiabk4Sy3whgqsGb8umaCHhsCIRuWX3HlmicH4Vg=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ESRI.ArcGIS.Carto.dll" size="2605056">
+      <assemblyIdentity name="ESRI.ArcGIS.Carto" version="10.2.0.0" publicKeyToken="8FC3CC631E44AD86" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>8StDaFCUI6L1QO9qQirci4XG8phLs4OmFDIxvG8z/+I=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ESRI.ArcGIS.CartoUI.dll" size="360448">
+      <assemblyIdentity name="ESRI.ArcGIS.CartoUI" version="10.2.0.0" publicKeyToken="8FC3CC631E44AD86" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>BZsrjDGohcKKND/pBbbSmSPzI9dWRDi8E8HSHdpA4f4=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ESRI.ArcGIS.Catalog.dll" size="327680">
+      <assemblyIdentity name="ESRI.ArcGIS.Catalog" version="10.2.0.0" publicKeyToken="8FC3CC631E44AD86" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>irjrURLkIuSIdj4t+rG7UOfX1zF7BA4F3ujoAX1YoZw=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ESRI.ArcGIS.CatalogUI.dll" size="352256">
+      <assemblyIdentity name="ESRI.ArcGIS.CatalogUI" version="10.2.0.0" publicKeyToken="8FC3CC631E44AD86" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>lGG4Vh/r8kIuwxm0YC6kXakJ0k0soX1ynLwXGBDf3Lo=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ESRI.ArcGIS.Controls.dll" size="626688">
+      <assemblyIdentity name="ESRI.ArcGIS.Controls" version="10.2.0.0" publicKeyToken="8FC3CC631E44AD86" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>teKdznmfLBUVOVYNaGTbS05iWeTFVV5b5QmLmITHywM=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ESRI.ArcGIS.DataSourcesFile.dll" size="159744">
+      <assemblyIdentity name="ESRI.ArcGIS.DataSourcesFile" version="10.2.0.0" publicKeyToken="8FC3CC631E44AD86" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>js0ZRbdkrpBrluq+0Td+tnA5fsEQ4Dz0epuk7dW4vn8=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ESRI.ArcGIS.DataSourcesGDB.dll" size="81920">
+      <assemblyIdentity name="ESRI.ArcGIS.DataSourcesGDB" version="10.2.0.0" publicKeyToken="8FC3CC631E44AD86" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>LEEL6e2XasF9Kwth5hLag8xx06gz8utDjgQMnlqscrc=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ESRI.ArcGIS.DataSourcesNetCDF.dll" size="19968">
+      <assemblyIdentity name="ESRI.ArcGIS.DataSourcesNetCDF" version="10.2.0.0" publicKeyToken="8FC3CC631E44AD86" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>ym5ICVQ8/RFj+iOJESZL3Vv7nAWZqGNdiBY1TCPoKWs=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ESRI.ArcGIS.DataSourcesOleDB.dll" size="11264">
+      <assemblyIdentity name="ESRI.ArcGIS.DataSourcesOleDB" version="10.2.0.0" publicKeyToken="8FC3CC631E44AD86" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>RoxIFf/z76q+WoBeaH7d3LSw7w8Nb19YbrlnVs9QeCk=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ESRI.ArcGIS.DataSourcesRaster.dll" size="868352">
+      <assemblyIdentity name="ESRI.ArcGIS.DataSourcesRaster" version="10.2.0.0" publicKeyToken="8FC3CC631E44AD86" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>AJgSdt2e60BS11mo8g+GTzm2o96zoI8fWxRejjukiR4=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ESRI.ArcGIS.Display.dll" size="413696">
+      <assemblyIdentity name="ESRI.ArcGIS.Display" version="10.2.0.0" publicKeyToken="8FC3CC631E44AD86" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>o1rf5l2Atv71O6kfzggJbK2CikWbxJ+jh88et17C9uY=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ESRI.ArcGIS.Framework.dll" size="102400">
+      <assemblyIdentity name="ESRI.ArcGIS.Framework" version="10.2.0.0" publicKeyToken="8FC3CC631E44AD86" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>VWoNMgJMT9Ufl9zh8wI8BDwVIWiPNI0ODjcE4Z8VDNk=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ESRI.ArcGIS.GeoAnalyst.dll" size="77824">
+      <assemblyIdentity name="ESRI.ArcGIS.GeoAnalyst" version="10.2.0.0" publicKeyToken="8FC3CC631E44AD86" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>CvlCfdXm3OwqEc0XN54YTM04ZFzyhjOGhQkTRJwcovs=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ESRI.ArcGIS.Geodatabase.dll" size="1323008">
+      <assemblyIdentity name="ESRI.ArcGIS.Geodatabase" version="10.2.0.0" publicKeyToken="8FC3CC631E44AD86" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>Dfa54AFXd5YY1g4hL9HkyfV7A13tpvonmq07CI/KlAg=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ESRI.ArcGIS.GeoDatabaseDistributed.dll" size="98304">
+      <assemblyIdentity name="ESRI.ArcGIS.GeoDatabaseDistributed" version="10.2.0.0" publicKeyToken="8FC3CC631E44AD86" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>Ro2UOvyJ2PT9RcMV+Nel1k60bnJ+iYdpkeBC/WPLLYA=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ESRI.ArcGIS.GeoDatabaseExtensions.dll" size="212992">
+      <assemblyIdentity name="ESRI.ArcGIS.GeoDatabaseExtensions" version="10.2.0.0" publicKeyToken="8FC3CC631E44AD86" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>a7o12S+ENhdWBFP2p7abNB9jPklvmqkwGES1iw2E8LI=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ESRI.ArcGIS.GeoDatabaseUI.dll" size="65536">
+      <assemblyIdentity name="ESRI.ArcGIS.GeoDatabaseUI" version="10.2.0.0" publicKeyToken="8FC3CC631E44AD86" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>kuPsR3FXicAxs2b7DVzL3xjMmu4TivUO9tinrVApDxw=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ESRI.ArcGIS.Geometry.dll" size="1138688">
+      <assemblyIdentity name="ESRI.ArcGIS.Geometry" version="10.2.0.0" publicKeyToken="8FC3CC631E44AD86" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>4oQSS0F2hvi+Hatxy9pkyIRSx9L9I0f5/bOCU7zOIaM=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ESRI.ArcGIS.Geoprocessing.dll" size="557056">
+      <assemblyIdentity name="ESRI.ArcGIS.Geoprocessing" version="10.2.0.0" publicKeyToken="8FC3CC631E44AD86" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>xlqSnQG7ikVH0+aQLfK15opachyujIZ/guQLIr9Wvtg=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ESRI.ArcGIS.GISClient.dll" size="86016">
+      <assemblyIdentity name="ESRI.ArcGIS.GISClient" version="10.2.0.0" publicKeyToken="8FC3CC631E44AD86" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>P6++n56T3Tp+88YemohdOybBwIbsnI7i9RkSGoJF6fc=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ESRI.ArcGIS.GlobeCore.dll" size="335872">
+      <assemblyIdentity name="ESRI.ArcGIS.GlobeCore" version="10.2.0.0" publicKeyToken="8FC3CC631E44AD86" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>JoN00HqFYDA2bTzLwjSEX6KT3OcYjVmK0ynGmwtFYk8=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ESRI.ArcGIS.NetworkAnalyst.dll" size="385024">
+      <assemblyIdentity name="ESRI.ArcGIS.NetworkAnalyst" version="10.2.0.0" publicKeyToken="8FC3CC631E44AD86" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>F3E1LFumtDw1MHtFBxibrHVmRxuAtFEyZhJmAB1XmTM=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ESRI.ArcGIS.Output.dll" size="90112">
+      <assemblyIdentity name="ESRI.ArcGIS.Output" version="10.2.0.0" publicKeyToken="8FC3CC631E44AD86" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>Q7esCDic1oeQg1peIlLbj5cghNoPByg5Sn2H8yHhqCE=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ESRI.ArcGIS.Search.dll" size="49152">
+      <assemblyIdentity name="ESRI.ArcGIS.Search" version="10.2.0.0" publicKeyToken="8FC3CC631E44AD86" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>xAnJv6itpuKQ8Vt8sD+HNbCXEALPSGFY26FqgaZ6yE4=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ESRI.ArcGIS.Server.dll" size="147456">
+      <assemblyIdentity name="ESRI.ArcGIS.Server" version="10.2.0.0" publicKeyToken="8FC3CC631E44AD86" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>wt7ceo8h/x0q717kkiE5w/FXp9+nHJn0/QCPhdxEemY=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ESRI.ArcGIS.System.dll" size="204800">
+      <assemblyIdentity name="ESRI.ArcGIS.System" version="10.2.0.0" publicKeyToken="8FC3CC631E44AD86" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>QpI/1BY5BwO9hFPbnZUqAwenQJ85a+8+zMRDzGS9bEE=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ESRI.ArcGIS.SystemUI.dll" size="36864">
+      <assemblyIdentity name="ESRI.ArcGIS.SystemUI" version="10.2.0.0" publicKeyToken="8FC3CC631E44AD86" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>3J08edlGCqAdnuKX0M+6dN+IF3YC/N8BIynhsvjVEOc=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ESRI.ArcGIS.Version.dll" size="13824">
+      <assemblyIdentity name="ESRI.ArcGIS.Version" version="10.2.0.0" publicKeyToken="8FC3CC631E44AD86" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>NCrxnEUT+8WSCJtflo+E4IPEc1N3XIW80IUQbjmYzEc=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FormAttribute.dll" size="12800">
+      <assemblyIdentity name="FormAttribute" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>XzyeGw54v5bQqhBs4xsFjCpfSEczjP4wlTEEgUFo2K4=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GIS_2310130172_.exe" size="397824">
+      <assemblyIdentity name="GIS_2310130172_" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>5fP3WreV+Fj85Empz0jxR2a5B1wIAxnbF2CyDYJwJag=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="stdole.dll" size="32192">
+      <assemblyIdentity name="stdole" version="7.0.3300.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>cIq9imgoDt+GxOFQczv6npUQ3lA/YBrtHKrixl+0mfw=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SymbologyMenu.dll" size="14848">
+      <assemblyIdentity name="SymbologyMenu" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>fZdAYram1FMc1gLh1JyFYaMUkQWu6WoSRhLXINvuR0Q=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="自定义窗体控件_Add_txt.dll" size="16384">
+      <assemblyIdentity name="自定义窗体控件_Add_txt" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>aFFbm/G6g+RQKdoGSNNMeorN6dzKFUR2BYOMmqnk7hc=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="自定义窗体控件_地图打印.dll" size="21504">
+      <assemblyIdentity name="自定义窗体控件_地图打印" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>k+e1c9WS/K5JMbQj3YfSBR6xqTGU2Li6PUbHzXxHjCo=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="自定义窗体控件_地图导出窗口.dll" size="19456">
+      <assemblyIdentity name="自定义窗体控件_地图导出窗口" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>vAW9PKIAc7o3BH8KMxUxXPCVV7NXl9HNqSe92iTq7ZQ=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="自定义窗体控件_地图量测窗口.dll" size="11264">
+      <assemblyIdentity name="自定义窗体控件_地图量测窗口" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>kFM5fRH9d/70iPQVeEviDXHxO1rgoGYp9YZ3MQ62IDc=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="自定义窗体控件_地图选择集.dll" size="14336">
+      <assemblyIdentity name="自定义窗体控件_地图选择集" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>ZySET9KaRPOqNQChcRHBhXVHDtITe+ZV2Mqr+u2ZqqA=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="自定义窗体控件_符号系统.dll" size="18944">
+      <assemblyIdentity name="自定义窗体控件_符号系统" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>FASnTewTFkIAAGXX+CIDtjyvg/z57PRAWTGksEIgBXk=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="自定义窗体控件_符号选择器.dll" size="22016">
+      <assemblyIdentity name="自定义窗体控件_符号选择器" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>LD432MfErSkCyMAjwgv7MPmQHUH3zyF/eoUByH6wm5I=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="自定义窗体控件_统计选择集.dll" size="14848">
+      <assemblyIdentity name="自定义窗体控件_统计选择集" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>N4kxiVh1OfK0XuTLBXDoLfY+AutB8za4BRcCbhLScQM=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="avatar_24x24.ico" size="1776">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>4Oug4yczvutq99HZ/4JZosf+NloyGXAptgG7PrOIcDI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="GIS_2310130172_.exe.config" size="187">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>xm4bo26HQ0LNVwz1vdPYtzhkpMnp2AI5i+f0b+OahTI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <fileAssociation extension=".My-GIS" description="1.6日发布" progid="aa" defaultIcon="avatar_24x24.ico" xmlns="urn:schemas-microsoft-com:clickonce.v1" />
+<publisherIdentity name="CN=DESKTOP-3I8MODG\NEGIAO" issuerKeyHash="e7d2c543f4d692717a625855990f5c21e6ff1986" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>zEze8O2hG8HbJvE2ZgPUZplKJ+mVwxbbauqTFbqIOvg=</DigestValue></Reference></SignedInfo><SignatureValue>6nhobhB0/K07U39oe+ZcAmdh1WQUUBx3AG9YowLRNmWkZxMrqElXUk2kW77Gb4KvcfUaMVk/tP2Tn0pMFLItqKu6EGf/NDCkUsw78Mzm6bI+/jjAl3tkY7wlsTzKCtWia0DVV4DlEnLh68rXQX2/DyiW5+3hrwiGKHhKEYkbpO4=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>70o2mUrJDWUQJYc/igMMk+IhYDshC8XxrY9Ci2pw9aJFKJdNUIhmWyRdgN23JOII8N03tfO1K7R4nR86yb3GE93imh15N0tImL3YjrUjVdHjIBDCmjv2dHZl+eioKLwO+jBI/n0cbyjOElN2cVA3FHIeZwUa94oqbwimfjBWOEE=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="f83a88ba1593ea6adb16c395e9274a9966d4036636f126dbc11ba1edf0de4ccc" Description="" Url=""><as:assemblyIdentity name="GIS_2310130172_.exe" version="1.0.0.9" publicKeyToken="714d7816f2411a89" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=DESKTOP-3I8MODG\NEGIAO</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>KwfMpln56XP17xz78CViZq5z8gIeXgWEq7WhqskFMYk=</DigestValue></Reference></SignedInfo><SignatureValue>O+TsjtM3TN2bZiEbxxl+Hgo4UUAiywu4YLD5yXKMeBwJqmvkiVR2Y+DhqnzZ2jY0zhiJLr7iVa/e1x5fmAoDEitBlZDIr1cQBCF2ecJubYcczorUL4xJvIGg+XzMJBhVHs0sL4wHbJfbwv7HrVHp6MoqdTJj1oveVYJAAc5Alfg=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>70o2mUrJDWUQJYc/igMMk+IhYDshC8XxrY9Ci2pw9aJFKJdNUIhmWyRdgN23JOII8N03tfO1K7R4nR86yb3GE93imh15N0tImL3YjrUjVdHjIBDCmjv2dHZl+eioKLwO+jBI/n0cbyjOElN2cVA3FHIeZwUa94oqbwimfjBWOEE=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB8TCCAVqgAwIBAgIQGaM0Mcwt0pVL3cMdUdYcgjANBgkqhkiG9w0BAQsFADA3MTUwMwYDVQQDHiwARABFAFMASwBUAE8AUAAtADMASQA4AE0ATwBEAEcAXABOAEUARwBJAEEATzAeFw0yNjAxMDYwODMzMTdaFw0yNzAxMDYxNDMzMTdaMDcxNTAzBgNVBAMeLABEAEUAUwBLAFQATwBQAC0AMwBJADgATQBPAEQARwBcAE4ARQBHAEkAQQBPMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDvSjaZSskNZRAlhz+KAwyT4iFgOyELxfGtj0KLanD1okUol01QiGZbJF2A3bck4gjw3Te187UrtHidHzrJvcYT3eKaHXk3S0iYvdiOtSNV0eMgEMKaO/Z0dmX56KgovA76MEj+fRxvKM4SU3ZxUDcUch5nBRr3iipvCKZ+MFY4QQIDAQABMA0GCSqGSIb3DQEBCwUAA4GBAAxCRSRNiUWIZSsqEdAcf7eyz8E6r6xIaCS8q55z1WjpJJNVwrSuZs5oQ/zyXzh4npgCApJM4BaA8DnSWf2NF6XUNVtBMKL5Gje9G7+2JJfGtNTkG+3R1r0IQkrKKZu1qmP2UxPPs0gxyx7QSzxdvwYm8QY6eojs/IhHecVnJuZd</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

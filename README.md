@@ -18,7 +18,7 @@
 
 ```text
 📦 arcgis_engine_project
- ┣ 📂 Data                      # 项目测试数据
+ ┣ 📂 Data # 项目测试数据
  ┃ ┣ 📂 CAD数据
  ┃ ┃ ┗ 📜 MillerRanch.dwg
  ┃ ┣ 📂 Mxd文件
@@ -33,7 +33,7 @@
  ┃ ┃ ┣ 📜 gonglu.shp.xml
  ┃ ┃ ┗ 📜 gonglu.shx
  ┃ ┣ 📂 个人地理数据库
- ┃ ┃ ┗ 📜 community.mdb
+ ┃ ┃ ┗ 📂 community.mdb
  ┃ ┣ 📂 文件地理数据库
  ┃ ┃ ┗ 📂 Representations.gdb
  ┃ ┣ 📂 文本文件
@@ -47,96 +47,206 @@
  ┃ ┃ ┣ 📜 Beijing19541.shp
  ┃ ┃ ┣ 📜 Beijing19541.shx
  ┃ ┃ ┗ 📜 schema.ini
- ┃ ┗ 📂 栅格数据
+ ┃ ┣ 📂 栅格数据
+ ┃ ┃ ┣ 📜 image.img
  ┃ ┃ ┣ 📜 image.img.aux.xml
  ┃ ┃ ┗ 📜 image.rrd
- ┣ 📂 Engine_Dev                # 核心代码解决方案目录
- ┃ ┣ 📂 GIS_2310130172_         # 主程序项目
+ ┃ ┗ 📜 Mxd文件.rar
+ ┣ 📂 Engine_Dev # 核心代码解决方案目录
+ ┃ ┣ 📂 DLL_符号化
  ┃ ┃ ┣ 📂 Properties
+ ┃ ┃ ┃ ┗ 📜 AssemblyInfo.cs
+ ┃ ┃ ┣ 📜 DLL_符号化.csproj
+ ┃ ┃ ┗ 📜 SymbologyHelper.cs
+ ┃ ┣ 📂 GIS_2310130172_ # 主程序项目
+ ┃ ┃ ┣ 📂 Properties
+ ┃ ┃ ┃ ┣ 📜 AssemblyInfo.cs
+ ┃ ┃ ┃ ┣ 📜 Resources.Designer.cs
+ ┃ ┃ ┃ ┣ 📜 Resources.resx
+ ┃ ┃ ┃ ┣ 📜 Settings.Designer.cs
+ ┃ ┃ ┃ ┗ 📜 Settings.settings
  ┃ ┃ ┣ 📂 Service References
  ┃ ┃ ┣ 📜 AddDateTool.cs
  ┃ ┃ ┣ 📜 App.config
+ ┃ ┃ ┣ 📜 avatar_24x24.ico
  ┃ ┃ ┣ 📜 ClassDiagram1.cd
+ ┃ ┃ ┣ 📜 ClassDiagram2.cd
+ ┃ ┃ ┣ 📜 ClearCurrentActiveToolCmd.bmp
  ┃ ┃ ┣ 📜 ClearCurrentToolCMD.cs
+ ┃ ┃ ┣ 📜 Command1.bmp
  ┃ ┃ ┣ 📜 CreateFeatureToolClass.cs
- ┃ ┃ ┣ 📜 FrmMain.Designer.cs
  ┃ ┃ ┣ 📜 FrmMain.cs
+ ┃ ┃ ┣ 📜 FrmMain.Designer.cs
  ┃ ┃ ┣ 📜 FrmMain.resx
- ┃ ┃ ┣ 📜 GIS_2310130172_Engine.csproj
  ┃ ┃ ┣ 📜 GeoMapAO.cs
+ ┃ ┃ ┣ 📜 GIS_2310130172_Engine.csproj
+ ┃ ┃ ┣ 📜 GIS_2310130172_Engine.csproj.user
+ ┃ ┃ ┣ 📜 GIS_2310130172_Engine_TemporaryKey.pfx
  ┃ ┃ ┣ 📜 MapManager.cs
  ┃ ┃ ┣ 📜 Program.cs
  ┃ ┃ ┣ 📜 SaveEditCommandClass.cs
- ┃ ┃ ┗ 📜 StopEditCommandClass.cs
+ ┃ ┃ ┣ 📜 StopEditCommandClass.cs
+ ┃ ┃ ┗ 📜 Table.icon.ico
  ┃ ┣ 📂 自定义DLL_SymbologyMenu # 符号化功能类库
  ┃ ┃ ┣ 📂 Properties
+ ┃ ┃ ┃ ┗ 📜 AssemblyInfo.cs
+ ┃ ┃ ┣ 📜 BarChartRender.bmp
  ┃ ┃ ┣ 📜 BarChartRender.cs
+ ┃ ┃ ┣ 📜 ClassBreakRender.bmp
  ┃ ┃ ┣ 📜 ClassBreakRender.cs
+ ┃ ┃ ┣ 📜 DotDensityRender.bmp
  ┃ ┃ ┣ 📜 DotDensityRender.cs
+ ┃ ┃ ┣ 📜 ProportionalSymbol.bmp
  ┃ ┃ ┣ 📜 ProportionalSymbol.cs
+ ┃ ┃ ┣ 📜 SimpleRender.bmp
  ┃ ┃ ┣ 📜 SimpleRender.cs
  ┃ ┃ ┣ 📜 SymbologyMenu.cs
+ ┃ ┃ ┣ 📜 UniqueValueRender.bmp
  ┃ ┃ ┣ 📜 UniqueValueRender.cs
  ┃ ┃ ┗ 📜 自定义DLL_Symbology.csproj
- ┃ ┣ 📂 自定义窗体控件          # 通用自定义控件
+ ┃ ┣ 📂 自定义窗体控件 # 通用自定义控件
  ┃ ┃ ┣ 📂 Properties
- ┃ ┃ ┣ 📜 UserControl1.Designer.cs
+ ┃ ┃ ┃ ┣ 📜 AssemblyInfo.cs
+ ┃ ┃ ┃ ┣ 📜 Resources.Designer.cs
+ ┃ ┃ ┃ ┗ 📜 Resources.resx
  ┃ ┃ ┣ 📜 UserControl1.cs
+ ┃ ┃ ┣ 📜 UserControl1.Designer.cs
  ┃ ┃ ┣ 📜 UserControl1.resx
  ┃ ┃ ┣ 📜 自定义窗体控件.csproj
  ┃ ┃ ┗ 📜 自定义窗体控件_打开图片功能.csproj
- ┃ ┣ 📂 自定义窗体控件_Add_txt  # 文本添加功能控件
+ ┃ ┣ 📂 自定义窗体控件_Add_txt # 文本添加功能控件
  ┃ ┃ ┣ 📂 Properties
+ ┃ ┃ ┃ ┣ 📜 AssemblyInfo.cs
+ ┃ ┃ ┃ ┣ 📜 Resources.Designer.cs
+ ┃ ┃ ┃ ┣ 📜 Resources.resx
+ ┃ ┃ ┃ ┣ 📜 Settings.Designer.cs
+ ┃ ┃ ┃ ┗ 📜 Settings.settings
  ┃ ┃ ┣ 📂 Service References
  ┃ ┃ ┣ 📜 App.config
  ┃ ┃ ┣ 📜 ClassDiagram1.cd
  ┃ ┃ ┣ 📜 ClassDiagram2.cd
- ┃ ┃ ┣ 📜 Form1.Designer.cs
  ┃ ┃ ┣ 📜 Form1.cs
+ ┃ ┃ ┣ 📜 Form1.Designer.cs
  ┃ ┃ ┣ 📜 Form1.resx
  ┃ ┃ ┣ 📜 Program.cs
  ┃ ┃ ┗ 📜 自定义窗体控件_Add_txt.csproj
  ┃ ┣ 📂 自定义窗体控件_FormAttribute # 属性表查看控件
  ┃ ┃ ┣ 📂 Properties
+ ┃ ┃ ┃ ┣ 📜 AssemblyInfo.cs
+ ┃ ┃ ┃ ┣ 📜 Resources.Designer.cs
+ ┃ ┃ ┃ ┣ 📜 Resources.resx
+ ┃ ┃ ┃ ┣ 📜 Settings.Designer.cs
+ ┃ ┃ ┃ ┗ 📜 Settings.settings
  ┃ ┃ ┣ 📜 App.config
- ┃ ┃ ┣ 📜 Form1.Designer.cs
  ┃ ┃ ┣ 📜 Form1.cs
+ ┃ ┃ ┣ 📜 Form1.Designer.cs
  ┃ ┃ ┣ 📜 Form1.resx
  ┃ ┃ ┣ 📜 Program.cs
  ┃ ┃ ┗ 📜 自定义窗体控件_FormAttribute.csproj
  ┃ ┣ 📂 自定义窗体控件_地图导出窗口 # 地图导出功能控件
  ┃ ┃ ┣ 📂 Properties
+ ┃ ┃ ┃ ┣ 📜 AssemblyInfo.cs
+ ┃ ┃ ┃ ┣ 📜 Resources.Designer.cs
+ ┃ ┃ ┃ ┣ 📜 Resources.resx
+ ┃ ┃ ┃ ┣ 📜 Settings.Designer.cs
+ ┃ ┃ ┃ ┗ 📜 Settings.settings
  ┃ ┃ ┣ 📜 App.config
  ┃ ┃ ┣ 📜 ExportMap.cs
- ┃ ┃ ┣ 📜 Form1.Designer.cs
  ┃ ┃ ┣ 📜 Form1.cs
+ ┃ ┃ ┣ 📜 Form1.Designer.cs
  ┃ ┃ ┣ 📜 Form1.resx
  ┃ ┃ ┗ 📜 自定义窗体控件_地图导出窗口.csproj
- ┃ ┣ 📂 自定义窗体控件_地图选择集   # 选择集管理控件
+ ┃ ┣ 📂 自定义窗体控件_地图打印
  ┃ ┃ ┣ 📂 Properties
- ┃ ┃ ┣ 📜 Form1.Designer.cs
+ ┃ ┃ ┃ ┣ 📜 AssemblyInfo.cs
+ ┃ ┃ ┃ ┣ 📜 Resources.Designer.cs
+ ┃ ┃ ┃ ┣ 📜 Resources.resx
+ ┃ ┃ ┃ ┣ 📜 Settings.Designer.cs
+ ┃ ┃ ┃ ┗ 📜 Settings.settings
+ ┃ ┃ ┣ 📜 ClassDiagram1.cd
  ┃ ┃ ┣ 📜 Form1.cs
+ ┃ ┃ ┣ 📜 Form1.Designer.cs
+ ┃ ┃ ┣ 📜 Form1.resx
+ ┃ ┃ ┣ 📜 LayoutHelper.cs
+ ┃ ┃ ┗ 📜 自定义窗体控件_地图打印.csproj
+ ┃ ┣ 📂 自定义窗体控件_地图选择集 # 选择集管理控件
+ ┃ ┃ ┣ 📂 Properties
+ ┃ ┃ ┃ ┣ 📜 AssemblyInfo.cs
+ ┃ ┃ ┃ ┣ 📜 Resources.Designer.cs
+ ┃ ┃ ┃ ┣ 📜 Resources.resx
+ ┃ ┃ ┃ ┣ 📜 Settings.Designer.cs
+ ┃ ┃ ┃ ┗ 📜 Settings.settings
+ ┃ ┃ ┣ 📜 Form1.cs
+ ┃ ┃ ┣ 📜 Form1.Designer.cs
  ┃ ┃ ┣ 📜 Form1.resx
  ┃ ┃ ┣ 📜 Program.cs
  ┃ ┃ ┗ 📜 自定义窗体控件_地图选择集.csproj
  ┃ ┣ 📂 自定义窗体控件_地图量测窗口 # 距离/面积量测控件
  ┃ ┃ ┣ 📂 Properties
+ ┃ ┃ ┃ ┣ 📜 AssemblyInfo.cs
+ ┃ ┃ ┃ ┣ 📜 Resources.Designer.cs
+ ┃ ┃ ┃ ┣ 📜 Resources.resx
+ ┃ ┃ ┃ ┣ 📜 Settings.Designer.cs
+ ┃ ┃ ┃ ┗ 📜 Settings.settings
  ┃ ┃ ┣ 📜 App.config
- ┃ ┃ ┣ 📜 Form1.Designer.cs
  ┃ ┃ ┣ 📜 Form1.cs
+ ┃ ┃ ┣ 📜 Form1.Designer.cs
  ┃ ┃ ┣ 📜 Form1.resx
  ┃ ┃ ┣ 📜 Program.cs
  ┃ ┃ ┗ 📜 自定义窗体控件_地图量测窗口.csproj
- ┃ ┣ 📂 自定义窗体控件_统计选择集   # 统计分析控件
+ ┃ ┣ 📂 自定义窗体控件_符号系统
  ┃ ┃ ┣ 📂 Properties
- ┃ ┃ ┣ 📜 Form1.Designer.cs
+ ┃ ┃ ┃ ┣ 📜 AssemblyInfo.cs
+ ┃ ┃ ┃ ┣ 📜 Resources.Designer.cs
+ ┃ ┃ ┃ ┣ 📜 Resources.resx
+ ┃ ┃ ┃ ┣ 📜 Settings.Designer.cs
+ ┃ ┃ ┃ ┗ 📜 Settings.settings
+ ┃ ┃ ┣ 📜 ClassDiagram1.cd
  ┃ ┃ ┣ 📜 Form1.cs
+ ┃ ┃ ┣ 📜 Form1.Designer.cs
+ ┃ ┃ ┣ 📜 Form1.resx
+ ┃ ┃ ┣ 📜 SymbologyHelper.cs
+ ┃ ┃ ┗ 📜 自定义窗体控件_符号系统.csproj
+ ┃ ┣ 📂 自定义窗体控件_符号选择器
+ ┃ ┃ ┣ 📂 Properties
+ ┃ ┃ ┃ ┣ 📜 AssemblyInfo.cs
+ ┃ ┃ ┃ ┣ 📜 Resources.Designer.cs
+ ┃ ┃ ┃ ┣ 📜 Resources.resx
+ ┃ ┃ ┃ ┣ 📜 Settings.Designer.cs
+ ┃ ┃ ┃ ┗ 📜 Settings.settings
+ ┃ ┃ ┣ 📜 Form1.cs
+ ┃ ┃ ┣ 📜 Form1.Designer.cs
+ ┃ ┃ ┣ 📜 Form1.resx
+ ┃ ┃ ┗ 📜 自定义窗体控件_符号选择器.csproj
+ ┃ ┣ 📂 自定义窗体控件_统计选择集 # 统计分析控件
+ ┃ ┃ ┣ 📂 Properties
+ ┃ ┃ ┃ ┣ 📜 AssemblyInfo.cs
+ ┃ ┃ ┃ ┣ 📜 Resources.Designer.cs
+ ┃ ┃ ┃ ┣ 📜 Resources.resx
+ ┃ ┃ ┃ ┣ 📜 Settings.Designer.cs
+ ┃ ┃ ┃ ┗ 📜 Settings.settings
+ ┃ ┃ ┣ 📜 Form1.cs
+ ┃ ┃ ┣ 📜 Form1.Designer.cs
  ┃ ┃ ┣ 📜 Form1.resx
  ┃ ┃ ┣ 📜 Program.cs
  ┃ ┃ ┗ 📜 自定义窗体控件_统计选择集.csproj
- ┃ ┗ 📜 Engine_Dev.sln
- ┗ 📂 课堂文件
- ┃ ┗ 📜 笔记9_23.txt
+ ┃ ┣ 📜 Engine_Dev.sln
+ ┃ ┣ 📜 Engine_Dev.suo
+ ┃ ┗ 📜 Engine_Dev.v11.suo
+ ┣ 📂 课堂文件
+ ┃ ┣ 📜 ArcMapObjectModel.pdf
+ ┃ ┣ 📜 Symbol.rar
+ ┃ ┣ 📜 地图导出.pdf
+ ┃ ┣ 📜 地图选择集.pdf
+ ┃ ┣ 📜 新建要素类.pdf
+ ┃ ┣ 📜 笔记9_23.txt
+ ┃ ┣ 📜 符号选择器.pdf
+ ┃ ┣ 📜 统计选择集.pdf
+ ┃ ┣ 📜 编辑菜单.pdf
+ ┃ ┣ 📜 自定义命令和工具.pdf
+ ┃ ┣ 📜 自定义菜单.pdf
+ ┃ ┗ 📜 距离面积测算.pdf
+ ┗ 📜 README.md
 ```
 
 ## ✨ 主要功能 (Features)

@@ -254,6 +254,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmSymbolSelector";
             this.Text = "符号选择器";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.frmSymbolSelector_Load);
             ((System.ComponentModel.ISupportInitialize)(this.SymbologyCtr)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbPreview)).EndInit();

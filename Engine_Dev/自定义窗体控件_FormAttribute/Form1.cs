@@ -68,7 +68,7 @@ namespace 自定义窗体控件_FormAttribute
         #region 双击该行，缩放到当前要素
         private void dataGridAttribute_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            // 1. 【防崩】防止点击表头（RowIndex 为 -1）导致程序崩溃
+            // 1. 防止点击表头（RowIndex 为 -1）导致程序崩溃
             if (e.RowIndex < 0) return;
 
             try
@@ -88,14 +88,13 @@ namespace 自定义窗体控件_FormAttribute
                 // 3. 【优化】获取要素几何范围
                 ESRI.ArcGIS.Geometry.IEnvelope outEnvelope = feature.Shape.Envelope;
 
-                // 4. 【关键修正】处理“点”要素
+                // 4. 处理“点”要素
                 // 如果是点，Envelope 的宽高为 0，直接 SetExtent 会出错或无效
                 if (outEnvelope.Width == 0 || outEnvelope.Height == 0)
                 {
                     // 向四周扩展一定比例或固定距离（根据地图单位，这里假设是度或米）
                     // 参数说明：dx, dy, asRatio (是否按比例)
-                    // 这里设置为 false，表示向四周各扩展 0.1 个地图单位（根据实际情况调整数值）
-                    // 或者使用 activeView.Extent.Width / 20 这种动态计算
+                    // 这里设置为 false，表示向四周各扩展 0.1 个地图单位
                     outEnvelope.Expand(0.01, 0.01, false);
                 }
                 else

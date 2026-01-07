@@ -40,6 +40,8 @@
             this.添加数据ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.局部导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.全局导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
+            this.地图打印ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.地图浏览ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.加载MXDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadMxFile方法ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,6 +67,7 @@
             this.需求分析ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.地图选择 = new System.Windows.Forms.ToolStripMenuItem();
             this.统计选择集 = new System.Windows.Forms.ToolStripMenuItem();
+            this.创建要素类ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Editor = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
@@ -77,6 +80,7 @@
             this.tsmEndEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+            this.分级符号ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.BarCoorTxt = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -102,8 +106,6 @@
             this.btnLayerSel = new System.Windows.Forms.ToolStripMenuItem();
             this.btnLayerUnSel = new System.Windows.Forms.ToolStripMenuItem();
             this.axToolbarControl1 = new ESRI.ArcGIS.Controls.AxToolbarControl();
-            this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
-            this.地图打印ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -136,7 +138,9 @@
             this.地图量测ToolStripMenuItem,
             this.chkCustomize,
             this.需求分析ToolStripMenuItem,
-            this.Editor});
+            this.创建要素类ToolStripMenuItem,
+            this.Editor,
+            this.分级符号ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(918, 25);
@@ -160,35 +164,35 @@
             // 保存地图ToolStripMenuItem
             // 
             this.保存地图ToolStripMenuItem.Name = "保存地图ToolStripMenuItem";
-            this.保存地图ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.保存地图ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.保存地图ToolStripMenuItem.Text = "保存地图";
             this.保存地图ToolStripMenuItem.Click += new System.EventHandler(this.保存地图ToolStripMenuItem_Click);
             // 
             // 加载地图ToolStripMenuItem
             // 
             this.加载地图ToolStripMenuItem.Name = "加载地图ToolStripMenuItem";
-            this.加载地图ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.加载地图ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.加载地图ToolStripMenuItem.Text = "加载地图";
             this.加载地图ToolStripMenuItem.Click += new System.EventHandler(this.加载地图ToolStripMenuItem_Click);
             // 
             // 新建地图ToolStripMenuItem
             // 
             this.新建地图ToolStripMenuItem.Name = "新建地图ToolStripMenuItem";
-            this.新建地图ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.新建地图ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.新建地图ToolStripMenuItem.Text = "新建地图";
             this.新建地图ToolStripMenuItem.Click += new System.EventHandler(this.新建地图ToolStripMenuItem_Click);
             // 
             // 另存地图ToolStripMenuItem
             // 
             this.另存地图ToolStripMenuItem.Name = "另存地图ToolStripMenuItem";
-            this.另存地图ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.另存地图ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.另存地图ToolStripMenuItem.Text = "另存地图";
             this.另存地图ToolStripMenuItem.Click += new System.EventHandler(this.另存地图ToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(121, 6);
             // 
             // 添加数据ToolStripMenuItem1
             // 
@@ -197,7 +201,7 @@
             this.全局导出ToolStripMenuItem,
             this.toolStripSeparator11});
             this.添加数据ToolStripMenuItem1.Name = "添加数据ToolStripMenuItem1";
-            this.添加数据ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.添加数据ToolStripMenuItem1.Size = new System.Drawing.Size(124, 22);
             this.添加数据ToolStripMenuItem1.Text = "导出地图";
             // 
             // 局部导出ToolStripMenuItem
@@ -213,6 +217,18 @@
             this.全局导出ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.全局导出ToolStripMenuItem.Text = "全局导出";
             this.全局导出ToolStripMenuItem.Click += new System.EventHandler(this.全局导出ToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator11
+            // 
+            this.toolStripSeparator11.Name = "toolStripSeparator11";
+            this.toolStripSeparator11.Size = new System.Drawing.Size(121, 6);
+            // 
+            // 地图打印ToolStripMenuItem
+            // 
+            this.地图打印ToolStripMenuItem.Name = "地图打印ToolStripMenuItem";
+            this.地图打印ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.地图打印ToolStripMenuItem.Text = "地图打印";
+            this.地图打印ToolStripMenuItem.Click += new System.EventHandler(this.地图打印ToolStripMenuItem_Click);
             // 
             // 地图浏览ToolStripMenuItem
             // 
@@ -406,6 +422,13 @@
             this.统计选择集.Text = "统计选择集";
             this.统计选择集.Click += new System.EventHandler(this.统计选择集_Click);
             // 
+            // 创建要素类ToolStripMenuItem
+            // 
+            this.创建要素类ToolStripMenuItem.Name = "创建要素类ToolStripMenuItem";
+            this.创建要素类ToolStripMenuItem.Size = new System.Drawing.Size(80, 21);
+            this.创建要素类ToolStripMenuItem.Text = "创建要素类";
+            this.创建要素类ToolStripMenuItem.Click += new System.EventHandler(this.btnCreate_Click);
+            // 
             // Editor
             // 
             this.Editor.BackColor = System.Drawing.Color.Transparent;
@@ -491,6 +514,13 @@
             this.toolStripSeparator9.Name = "toolStripSeparator9";
             this.toolStripSeparator9.Size = new System.Drawing.Size(178, 6);
             // 
+            // 分级符号ToolStripMenuItem
+            // 
+            this.分级符号ToolStripMenuItem.Name = "分级符号ToolStripMenuItem";
+            this.分级符号ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
+            this.分级符号ToolStripMenuItem.Text = "分级符号";
+            this.分级符号ToolStripMenuItem.Click += new System.EventHandler(this.分级符号ToolStripMenuItem_Click);
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -554,12 +584,12 @@
             this.axTOCControl1.OnMouseUp += new ESRI.ArcGIS.Controls.ITOCControlEvents_Ax_OnMouseUpEventHandler(this.axTOCControl1_OnMouseUp);
             this.axTOCControl1.OnDoubleClick += new ESRI.ArcGIS.Controls.ITOCControlEvents_Ax_OnDoubleClickEventHandler(this.axTOCControl1_OnDoubleClick);
             // 
-            // EagleEyeMapConrol
+            // EagleEyeMapControl
             // 
             this.EagleEyeMapControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.EagleEyeMapControl.Location = new System.Drawing.Point(0, 0);
-            this.EagleEyeMapControl.Name = "EagleEyeMapConrol";
-            this.EagleEyeMapControl.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("EagleEyeMapConrol.OcxState")));
+            this.EagleEyeMapControl.Name = "EagleEyeMapControl";
+            this.EagleEyeMapControl.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("EagleEyeMapControl.OcxState")));
             this.EagleEyeMapControl.Size = new System.Drawing.Size(220, 181);
             this.EagleEyeMapControl.TabIndex = 0;
             this.EagleEyeMapControl.OnMouseDown += new ESRI.ArcGIS.Controls.IMapControlEvents2_Ax_OnMouseDownEventHandler(this.axMapControl2_OnMouseDown);
@@ -578,6 +608,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(694, 533);
             this.tabControl1.TabIndex = 0;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -628,7 +659,7 @@
             // axLicenseControl1
             // 
             this.axLicenseControl1.Enabled = true;
-            this.axLicenseControl1.Location = new System.Drawing.Point(874, 15);
+            this.axLicenseControl1.Location = new System.Drawing.Point(886, 0);
             this.axLicenseControl1.Name = "axLicenseControl1";
             this.axLicenseControl1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axLicenseControl1.OcxState")));
             this.axLicenseControl1.Size = new System.Drawing.Size(32, 32);
@@ -655,50 +686,50 @@
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(133, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
             // 
             // btnAttribute
             // 
             this.btnAttribute.Name = "btnAttribute";
-            this.btnAttribute.Size = new System.Drawing.Size(136, 22);
+            this.btnAttribute.Size = new System.Drawing.Size(152, 22);
             this.btnAttribute.Text = "属性表";
             this.btnAttribute.Click += new System.EventHandler(this.btnAttribute_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(133, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
             // 
             // btnZoomToLayer
             // 
             this.btnZoomToLayer.Name = "btnZoomToLayer";
-            this.btnZoomToLayer.Size = new System.Drawing.Size(136, 22);
+            this.btnZoomToLayer.Size = new System.Drawing.Size(152, 22);
             this.btnZoomToLayer.Text = "缩放到图层";
             this.btnZoomToLayer.Click += new System.EventHandler(this.btnZoomToLayer_Click);
             // 
             // btnRemovelLayer
             // 
             this.btnRemovelLayer.Name = "btnRemovelLayer";
-            this.btnRemovelLayer.Size = new System.Drawing.Size(136, 22);
+            this.btnRemovelLayer.Size = new System.Drawing.Size(152, 22);
             this.btnRemovelLayer.Text = "移除图层";
             this.btnRemovelLayer.Click += new System.EventHandler(this.btnRemovelLayer_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(133, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(149, 6);
             // 
             // btnLayerSel
             // 
             this.btnLayerSel.Name = "btnLayerSel";
-            this.btnLayerSel.Size = new System.Drawing.Size(136, 22);
+            this.btnLayerSel.Size = new System.Drawing.Size(152, 22);
             this.btnLayerSel.Text = "图层可选";
             this.btnLayerSel.Click += new System.EventHandler(this.btnLayerSel_Click);
             // 
             // btnLayerUnSel
             // 
             this.btnLayerUnSel.Name = "btnLayerUnSel";
-            this.btnLayerUnSel.Size = new System.Drawing.Size(136, 22);
+            this.btnLayerUnSel.Size = new System.Drawing.Size(152, 22);
             this.btnLayerUnSel.Text = "图层不可选";
             this.btnLayerUnSel.Click += new System.EventHandler(this.btnLayerUnSel_Click);
             // 
@@ -710,17 +741,6 @@
             this.axToolbarControl1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axToolbarControl1.OcxState")));
             this.axToolbarControl1.Size = new System.Drawing.Size(918, 28);
             this.axToolbarControl1.TabIndex = 2;
-            // 
-            // toolStripSeparator11
-            // 
-            this.toolStripSeparator11.Name = "toolStripSeparator11";
-            this.toolStripSeparator11.Size = new System.Drawing.Size(149, 6);
-            // 
-            // 地图打印ToolStripMenuItem
-            // 
-            this.地图打印ToolStripMenuItem.Name = "地图打印ToolStripMenuItem";
-            this.地图打印ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.地图打印ToolStripMenuItem.Text = "地图打印";
             // 
             // FrmMain
             // 
@@ -737,7 +757,7 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmMain";
-            this.Text = "Form1";
+            this.Text = "My GIS";
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -842,6 +862,8 @@
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
         private System.Windows.Forms.ToolStripMenuItem 地图打印ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 分级符号ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 创建要素类ToolStripMenuItem;
     }
 }
 

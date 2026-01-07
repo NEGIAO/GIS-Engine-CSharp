@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="GIS_2310130172_Engine.AddDateTool" Collapsed="true">
+    <Position X="4.75" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAQAAgCAAAAAAICAgAABAAAA=</HashCode>
+      <FileName>AddDateTool.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GIS_2310130172_Engine.ClearCurrentToolCMD" Collapsed="true">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQACgCAAAAAAACAwAABAAAA=</HashCode>
+      <FileName>ClearCurrentToolCMD.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GIS_2310130172_Engine.CreateFeatureToolClass" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>BAAAFCAAAwLAAIGAAAgAAQSCJDIAAAAAKQAJIAACCgA=</HashCode>
+      <FileName>CreateFeatureToolClass.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="GIS_2310130172_Engine.FrmMain" Collapsed="true">
+    <Position X="4.75" Y="1.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>jRCiw/24oLAkgu5JWXyHYna3PEApE1Eft4x1DK59z7E=</HashCode>
+      <FileName>FrmMain.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GIS_2310130172_Engine.MapManager" Collapsed="true">
+    <Position X="8.25" Y="1.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAABAAAAAAAACAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>MapManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GIS_2310130172_Engine.SaveEditCommandClass" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4.75" Y="2.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>BAAABCAAAAAAAICAAAgAAQQCBCAAAAAACQAIIAAACAA=</HashCode>
+      <FileName>SaveEditCommandClass.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="GIS_2310130172_Engine.StopEditCommandClass" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="2.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>BAAABCAAAAAAAICAAAgAAQQCBCAAAAAACQAIIAAACAA=</HashCode>
+      <FileName>StopEditCommandClass.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyAEApp2025.GeoMapAO" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="1.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>IIiBAgAAgQECGAANAAkAAgAAAACAAAoOAQEAgiCAAGA=</HashCode>
+      <FileName>GeoMapAO.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>
