@@ -233,6 +233,10 @@
  ┃ ┣ 📜 Engine_Dev.sln
  ┃ ┣ 📜 Engine_Dev.suo
  ┃ ┗ 📜 Engine_Dev.v11.suo
+ ┣ 📂 Release                   # 项目发布文件
+ ┃ ┣ 📜 GIS_2310130172_.application
+ ┃ ┣ 📜 GIS_2310130172_.zip
+ ┃ ┗ 📜 setup.exe              # 安装程序
  ┣ 📂 课堂文件
  ┃ ┣ 📜 ArcMapObjectModel.pdf
  ┃ ┣ 📜 Symbol.rar
@@ -260,10 +264,22 @@
 
 ## 🚀 使用说明 (Usage)
 
-1.  克隆或下载本仓库。
-2.  使用 **Visual Studio 2012** 打开 `Engine_Dev/Engine_Dev.sln`。
-3.  **重要**：由于 ArcGIS Engine 版本差异，打开项目后可能需要重新引用 `ESRI.ArcGIS.*` 相关类库。
-4.  编译并运行项目。
+### 方式一：快速安装（推荐）
+
+`Release` 文件夹中提供了项目的发布文件，用户可以直接安装使用：
+
+1. 运行 `Release/setup.exe` 安装程序。
+2. **环境要求**：
+   - ⚠️ **必须先安装 ArcMap 10.2.2** 才能提供 ESRI Runtime 环境，否则无法完成安装。
+   - ℹ️ **ArcMap 10.8 版本说明**：虽然 ArcMap 10.8 也可以提供运行环境，但由于版本升级导致部分 API 接口变更，会造成部分功能失效或无法执行。
+   - ✅ **强烈推荐**：安装 **ArcMap 10.2.2** 版本，以确保与本项目的 Engine 版本完全对应，获得最佳使用体验。
+
+### 方式二：从源码编译
+
+1. 克隆或下载本仓库。
+2. 使用 **Visual Studio 2012** 打开 `Engine_Dev/Engine_Dev.sln`。
+3. **重要**：由于 ArcGIS Engine 版本差异，打开项目后可能需要重新引用 `ESRI.ArcGIS.*` 相关类库。
+4. 编译并运行项目。
 
 ## 📝 备注
 
